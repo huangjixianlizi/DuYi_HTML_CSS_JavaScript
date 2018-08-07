@@ -1,0 +1,148 @@
+#css选择器
+
+###ps：本页所有代码可放在同一html与css文件中进行预览（方便对比）
+
+######【行间样式优先于外部css样式】
+***
+***
+
+###id选择器
+
+html代码：
+
+    <!-- id选择器   id必须一对一
+    <div id="only"></div>
+	<div id="only"></div> -->
+
+	<div id="only">only</div>
+	<div id="only1" >only1</div>
+	<div id="only2" class="demo demo1">only2</div>
+
+    <br><br><br><br>
+
+css代码：
+ 
+    /*id选择器    （权重最高）（样式定义：定义过的权重高为准；未定义的则全部覆盖）
+    （相同属性以权重高的为准--例only2；789aaa【通配符选择器改变背景颜色】）*/
+    #only{
+	background-color: red;
+    }
+    #only1{
+	background-color: pink;
+    }
+    #only2{
+	background-color: pink;
+    }
+
+***
+***
+###class选择器
+
+html代码：
+
+    <!--  class选择器  class多对多-->
+    <div class="demo">123</div>
+    <div class="demo1">123</div>
+    <div class="demo1" style="font-size: 20px;background-color: pink;">123</div>
+    <!--------------------------- 行间样式优先于外部css（样式）
+     -------------------------->
+    <div class="demo demo1">3456</div>
+    <br><br><br><br>
+
+css代码：
+
+    /*class选择器   （权重小于id选择器【id一对一的唯一】）*/
+    .demo{
+	background-color: red;
+
+    }
+    .demo1{
+	font-size: 40px;
+    }
+***
+***
+###标签选择器
+
+html代码：
+  
+    <!--   标签选择器   本例所有的div均改变样式
+    	//请注意demo1-div的颜色样式-->
+    <div>123</div>
+    <div>456</div>
+    <div>
+    789	<!-- 与是否嵌套无关 -->
+    <span>aaa</span>
+    </div>
+    <span>bbb</span>
+    <br><br><br><br>
+css代码：
+    
+    
+    /*标签选择器   （权重小于class和id选择器）*/
+    div{
+	background-color: green;
+    }
+    span{
+	font-size: 50px;
+	color: black;
+    }
+
+***
+***
+###通配符选择器
+
+html代码：
+
+    
+    <!--  通配符选择器 -->
+    <div>qqq</div>
+    <strong>www</strong>
+    <span>eee</span>
+    <br><br><br><br>
+
+
+css代码：
+
+    /*通配符选择器*/
+    /*代表全局  （权重最小）*/
+     *{
+	background-color: yellow;
+    }
+
+
+***
+***
+###属性选择器
+
+html代码：
+
+    <!-- 属性选择器 -->
+    <div id="qwer" class="asdf">qwerasdf</div>
+    <div id="qwer1">qwerasdf1</div>
+    <br><br>
+
+css代码：
+
+    /*属性选择器  (属性选择器和class选择器并级)*/
+    [class="asdf"]{
+    /*有带“？？？”的class属性的标签改变样式*/
+	font-size: 40px;
+	background-color: blue;
+	}	
+
+	[id]{/*有id属性的均改变样式*/
+		/*background-color: red;*/
+	}
+
+***
+***
+###！important
+
+css代码：
+
+	/*!important ！！！！！！！！！！*/
+	/*div{
+		background-color: green!important;
+	}*/
+***
+***

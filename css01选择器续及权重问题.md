@@ -1,0 +1,182 @@
+#复杂选择器
+
+***
+***
+###ps:到 权重计算 前的所有代码可放在同一html与css文件中通过运行观察
+###父子选择器/派生选择器
+html代码：
+ 
+    <div>
+		<span>123</span>
+	</div>
+	    <span>123</span>
+	<div class="a">
+		<strong class="b">
+		<em>456</em>
+	    </strong>
+	</div>
+	    <em>456</em>
+	 <br><br><br><br>
+
+css代码：
+	
+	/*	<!-- 父子选择器/派生选择器 (间接父子关系也生效)-->*/
+	div span{
+	background-color: red;
+	}
+	
+	/*.a */.b em{
+	background-color: red;
+	}
+
+***
+***
+#直接子元素选择器
+
+html代码：
+
+    <!--  直接子元素选择器 -->
+	 <div>
+	 	<em>1</em><br>
+	 	<strong>
+	 		<em>2</em>
+	 	</strong>
+	 </div>
+     <br><br>
+
+css代码：
+
+
+    /*<!--  直接子元素选择器 -->*/
+	div > em{
+	background-color: green;
+	}
+	/*div em{
+	    background-color: green;
+	}*/
+***
+***
+##ps:浏览器遍历父子选择器时从右向左【效率】
+***
+***
+###并列选择器
+html代码：
+
+	<!-- 并列选择器 -->
+	<div>1</div>
+	<div class="demo">2</div>
+	<p class="demo">3</p>
+	
+	<br><br>
+
+css代码：
+	
+	/*   <!-- 并列选择器 [没有空格]-->*/
+	div.demo{
+	background-color: pink;
+	}
+***
+***
+###分组选择器
+html代码：
+
+	<!--   分组选择器
+	<section>1</section>
+	<strong>2</strong>
+	<em>3</em>
+	 -->
+
+css代码：
+
+	/*  <!--   分组选择器 -->
+	section,strong,em{
+		background-color: blue;
+	}
+	
+	 */
+***
+***
+#【权重值及权重计算】
+###各个选择器的权重值
+       !important     正无穷 
+	    行间样式         1000
+	    id               100
+        class|属性|伪类   10
+        标签|伪元素        1
+        通配符             0
+         进制            256
+
+###权重计算
+    
+    只要是同行的选择器， 
+    权重值相加进行比较，
+    样式跟随权重值大的。 
+###ps:权重值的进制是256进制！！
+
+***
+***
+###伪类选择器/首行缩进问题/简单的权重计算问题
+
+html代码：
+
+    <div id="div2">
+		国是礼仪之邦，这个形象是我们一直以来对外宣传的，从西周开始，就确定了礼，中国就进入了以礼治天下的时代，说的高雅一点，中国的历代统治者和劳动人民是注重礼仪的，
+        说的通俗一点就是中国其实是注重仪式感的一个国家，小到读书结婚，大到祭祀登基，其实都是仪式感非常强的画面，仿佛有了这些仪式，所做的一切才合法。
+        这种仪式感也反应到中国的建筑上面，比如很多人都会对屋脊上蹲着的那些神兽很感兴趣，为什么他们会蹲在屋脊上，为什么有的建筑上神兽多，有的建筑上神兽少，这里面有什么讲究没？
+	</div>
+
+	<br><hr><br>
+
+    <a href="www.baidu.com" id="a1">www.baidu.com</a>
+	<div id="div3">
+		www.baidu.com
+	</div>
+
+	<br><hr><br>
+
+	<!-- !!!!权重问题 !!!!!-->
+	<a class="btj" href="www.baidu.com" style="text-decoration: none;">www.baidu.com</a>
+	<a class="btj" href="www.taobao.com">www.taobao.com</a>
+	<a class="btj" href="www.jdcom">www.jd.com</a>
+
+css代码：
+
+	#div2 {
+	padding-top: 20px;
+	border:1px solid black;
+	text-align: left;/*水平对齐方式*/
+	height: 200px;
+	line-height: 20px;
+	text-indent: 2em;
+	/*1em = 1 font-size   这里为默认的16px*/
+	}
+	
+	#div3 {
+	text-decoration: underline;
+	color: rgb(0,0,238);
+	cursor: pointer;
+	/*cursor  鼠标放在上面是改变鼠标样式*/
+	
+	}
+	
+	
+	/*！！！！！！！伪类选择器！！！！！！！*/
+	#a1:hover {
+		background-color: orange;
+	
+	}
+	
+	
+	/*<!-- !!!!权重问题 !!!!!-->*/
+	.btj{
+		text-decoration: none;
+	}
+	.btj:hover {
+		text-decoration: underline;
+		background-color: #f40;
+		color: #FFF;
+		font-size:  16px;
+		font-weight: bold;
+		font-family: arial;
+		border-radius: 10px;
+	}
