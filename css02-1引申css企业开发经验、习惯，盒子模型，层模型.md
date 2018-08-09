@@ -306,6 +306,7 @@ IE8 及更早IE版本不支持设置填充的宽度和边框的宽度属性。
 行级元素垂直方向上的margin无效
 
 ###定位
+
 	
 	属性:position
 	分类:
@@ -314,15 +315,80 @@ IE8 及更早IE版本不支持设置填充的宽度和边框的宽度属性。
 	                top : 100px ;(默认值为auto)
 	    其中left相当于X轴(从左到右),top相当于Y轴(自上到下),在定位时以元素的左上角为原点.
 	    作用:1.脱离原来位置进行定位.其他元素可以与它重叠.每一个定位元素都占单独的一层,不互相影响.
-	    2.相对于最近的有定位的父级进行定位,如果没有最近的有定位的父级,那么九相对于文档进行定位.
+	    ！！！！！！2.相对于最近的有定位的父级进行定位,如果没有最近的有定位的父级,那么九相对于文档进行定位.-------------见下面=====例1=====。
 	
 	    2.position : relative ;
 	    作用:1.保留原来出生位置进行层定位.
-	        2.相对于出生位置进行定位.
+	    ！！！！！！ 2.相对于出生位置进行定位.
 
         3.固定定位 : position : fixed ;(IE6没有fixed定位)
             作用:1.脱离原来位置进行定位.
-                 2.相对于可视区窗口进行定位.
+                 2.相对于可视区窗口进行定位.(广告定位=====例2=====)
+######例1
+html代码：
+
+	<div class="wrapper">
+		<div class="content">
+			<div class="box">
+				
+			</div>
+		</div>	
+	</div>
+
+css代码：
+
+    position: relative;/*position也可以*/
+
+将上面代码分别放于1 2 3位置查看效果
+	
+	 *{
+		margin:0;
+		padding:0;
+	     }
+	 .wrapper{
+		//1   //3
+		margin-left: 200px;
+		width: 200px;
+		height: 200px;
+		background-color: orange;
+    	 }
+	
+	.content{
+		//2   //3
+		margin-left: 100px;
+		width: 100px;
+		height: 100px;
+		background-color: black;
+	     }
+	
+	
+	.box{
+		position: absolute;
+		/* 关于absolute定位的性质*/
+		left: 50px;
+		width: 50px;
+		height: 50px;
+		background-color: yellow;
+	    }
+
+######例2
+css代码：
+
+	*{
+		margin:0;
+		padding:0;
+	}
+	div{
+		position: absolute;/*absolute相对于窗口文档定位；相对窗口定位用fixed*/
+		left: 50%;/*用百分比进行定位*/
+		top: 50%;
+		width: 100px;
+		height: 100px;
+		background-color: green;
+		margin-left: -50px;
+		margin-top: -50px;/*值为自己内容的半个身位*/
+	
+	}
 
 
 **ps:块级元素不设高度,(height的默认值位0),内容区由内容撑开,如果没有内容,由高度就为0;不设置宽度便占满整屏.其中 width 默认值为auto(自适应).**
@@ -330,10 +396,13 @@ IE8 及更早IE版本不支持设置填充的宽度和边框的宽度属性。
 ###opacity 透明度 属性
 	opacity(透明度):取值在0到1之间
 ***
-###用法: 
+###position用法: 
 
 	 1.设置参照物的话用relative更加合适. 
 	 2.设置定位用absolute最合适.
-
+     【ps  ：[经验]：    用relative作为参照物  用absolute来进行定位】
+***
+### Z-index：1；
+	此属性用来设置元素在Z轴的位置。值越大，在Z轴上越靠近屏幕外；即覆盖。
 ***
 ***
