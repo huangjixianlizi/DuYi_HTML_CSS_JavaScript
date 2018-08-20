@@ -8,9 +8,10 @@ css代码：
 
 	color: rgb(255,255,255);
 
-
+<br>
 ***
 ***
+<br>
 #如何让单行文本水平居中
 ###常用text-align属性和line-height属性结合实现
 html代码：
@@ -26,8 +27,10 @@ css代码：
 	height: 200px;
 	line-height: 200px;/*让单行高度等于border高度即可单行垂直居中*/
     }
+<br>
 ***
 ***
+<br>
 #行级元素  块级元素  行级块元素
 
 ###行级元素、内联元素  inline
@@ -66,9 +69,10 @@ css代码：
 
 
 
-
+<br>
 ***
 ***
+<br>
 #图片拼接问题
 ###凡是带有inline的元素均有文字特性（空格）
 **可在css里通过display属性更改inline、block、inline-block**
@@ -82,10 +86,10 @@ css代码：
 错误解决方法：通过css设置
 
     padding-left: -4px;
-
+<br>
 ***
 ***
-
+<br>
 #一种编程思想：先写功能[css]，再写元素[html]
 ###目标：我想写一写颜色和大小不同的方块
 ####第一种
@@ -164,8 +168,10 @@ css代码：
 	width: 50px;
 	height: 50px;
     }
+<br>
 ***
 ***
+<br>
 #通配符是初始化所有标签最好的方式（权重 == 0）
 css代码：
 	
@@ -173,9 +179,10 @@ css代码：
 	  margin:0;
       padding:0;
 	}
-
+<br>
 ***
 ***
+<br>
 #body的基础属性margin  ！默认8px
 如果不设置body.margin，则会发现方块与浏览器边界有缝隙，用margin消除。
 
@@ -195,9 +202,10 @@ css代码：
       height:100px;
       backgroung-color:red;
 	}
-
+<br>
 ***
 ***
+<br>
 #盒子模型
 
 ![](http://www.runoob.com/images/box-model.gif)
@@ -243,7 +251,7 @@ padding  border margin 等等 均可以单独设置四个方向
 ***
 ###可视区
 	
-	不包括margin
+	可视区不包括margin；即只有border padding content
 	
 【margin无颜色，padding有颜色】
 
@@ -298,8 +306,10 @@ IE8 及更早IE版本不支持设置填充的宽度和边框的宽度属性。
 
 解决IE8及更早版本不兼容问题可以在HTML页面声明 <!DOCTYPE html>即可。
 
+<br>
 ***
 ***
+<br>
 #层模型
 
 ###特点
