@@ -52,6 +52,7 @@ css代码：
 <br>
 ##第二种（专业解决）：BFC
 bfc ：block format context【块级格式化上下文】
+
 bfc设置完以后，特定的盒子会改变极少的语法规则【可将margin塌陷解决】
 
 <br>
