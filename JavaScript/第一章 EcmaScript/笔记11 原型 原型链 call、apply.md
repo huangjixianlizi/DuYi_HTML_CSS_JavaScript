@@ -103,3 +103,74 @@
 ###3.绝大多数对象的最终都会继承自Object.prototype
 
 ###4.Object.create(原型);
+
+
+------
+------
+
+
+#call、apply
+
+**作用：改变this指向；  区别：后面传的参数形式不同**
+
+call 需要把实参按照形参的个数传进去
+apply需要传一个arguments
+
+##call
+
+正常方法执行时：  test() -->test.call();
+
+借用你的方法，实现我的功能（参数完全覆盖）。
+
+
+例一： 简单的覆盖（对象）
+
+    	function Person(name ,age) {
+    		//call更改指向 相当于this = obj 然后将所有属性添加到obj里
+    		this.name = name;
+    		this.age = age;
+    	}
+
+    	var obj = {}    //obj为空对象
+
+    	Person.call(obj,'qwe',300);//第一个参数，改变指向。 其余参数传参（参数需完全覆盖），obj对象不再为空
+    	console.log(obj);  //输出{name: "qwe", age: 300}
+
+例二：在函数里面的覆盖（构造函数）************
+	
+	    function Person(name, tel, sex) {
+	        this.name = name;
+	        this.tel = tel;
+	        this.sex = sex;
+	    }
+	
+	    function Student(name, age, sex, tel, grade) {
+	        Person.call(this, name, tel, sex);  
+	        this.age = age;
+	        this.grade = grade;
+	    }
+	
+	    var student = new Student('huang', 22, 'male', 123456, 5);
+	    console.log(student);
+	    /* Student
+			age:22
+			grade:5
+			name:"huang"
+			sex:"male"
+			tel:123456*/
+
+
+##apply
+
+apply只能传一个参数，而且是数组。
+
+
+    	function Person(name ,age) {
+    		this.name = name;
+    		this.age = age;
+    	}
+
+    	var obj = {} 
+
+    	Person.apply(obj,['qwe',300]);
+    	console.log(obj);  //输出{name: "qwe", age: 300}
