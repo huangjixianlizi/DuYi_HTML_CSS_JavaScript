@@ -1,5 +1,7 @@
 ##你可以使用 typeof 操作符来检测变量的数据类型。
 
+###String \ Number \ Boolean \ Undefined \ Object \ Function
+
 		实例
 		typeof "John"                // 返回 string 
 		typeof 3.14                  // 返回 number
