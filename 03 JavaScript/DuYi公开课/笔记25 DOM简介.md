@@ -20,7 +20,7 @@
     
 	    document代表整个文档
 	
-		document.getElementById() //元素id 在Ie8以下的浏览器，不区分id大小写，而且也返回匹配name属性的元素   【不用！与后端拼接问题】
+		document.getElementById() //元素id 在Ie8以下的浏览器，不区分id大小写，而且也返回匹配name属性的元素   【与后端拼接问题】
 	
 		.getElementsByTagName() // 标签名
 	
@@ -28,7 +28,7 @@
 	
 		.getElementsByClassName() // 类名 -> ie8和ie8以下的ie版本中没有，可以多个class一起
 	
-		.querySelector() // css选择器   在ie7和ie7以下的版本中没有   【不用！无实时性】
+		.querySelector() // css选择器   在ie7和ie7以下的版本中没有   【无实时性】
 	
 		.querySelectorAll() // css选择器 在ie7和ie7以下的版本中没有
 
