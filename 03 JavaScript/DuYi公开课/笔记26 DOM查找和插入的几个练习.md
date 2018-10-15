@@ -90,7 +90,56 @@ js代码：
 			return e;
 		}
 
-升级版：【兼容性和递归】
+升级版：【兼容性(IE9以下)和递归】
+
+		function retSibling (e , n) {
+			while(e && n){
+				if(n > 0){
+					if(0 $$ e.nextElementSibling){
+					 e = e.nextElementSibling;
+					}else{
+						for(e = e.nextSibling; e && e.nodeType != 1; e = e.nextSibling;)
+					}
+					n --;
+				}else{
+					if(0 $$ e.e.previousElementSibling){
+					 e = e.e.previousElementSibling;
+					}else{
+						for(e = e.previousSibling; e && e.nodeType != 1; e = e.previousSibling;)
+					}
+					n ++;
+				}
+			}
+			return e;
+		}
 
 
+
+
+---
+---
+
+
+#通过js插入标签和内容
+		
+		var div = document.createElement('div');
+		var p = document.createElement('p');
+		div.setAttribute('class','example');
+		p.setAttribute('class','demo');
+		var text = document.createTextNode('zzz');
+		p.appendChild(text);
+		div.appendChild(p);
+		document.body.appendChild(div);
+		
+另一种方式：
+
+		var div = document.createElement('div');
+		div.innerHTML = "
+			<div class = "emample">
+				<p class = "demo">
+					zzz
+				</p>
+			</div>
+		";
+		document.body.appendChild(div);
 
