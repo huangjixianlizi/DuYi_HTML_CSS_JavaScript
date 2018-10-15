@@ -143,3 +143,31 @@ js代码：
 		";
 		document.body.appendChild(div);
 
+
+---
+---
+
+#封装一个insertAfter，仿照insertBefore
+
+		Element.prototype.insertAfter = function (targetNode,afterNode) {
+			var beforeNode = afterNode.nextElementSibling;
+			if(beforeNode ==null){
+				this.appendChild(targetNode);
+			}else{
+				this.insertBefore(targetNode, beforeNode);
+			}
+		}
+
+
+---
+---
+
+#将目标节点内部的节点逆序
+
+	<div>
+		<p></p>
+		<i></i>
+		<span></span>
+	</div>
+
+方法：appendChild 
