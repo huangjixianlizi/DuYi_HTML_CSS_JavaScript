@@ -4,3 +4,8 @@
 
 
 #js定时器
+
+		setInterval(function () {
+			console.log('a');
+		},2000);   //两千毫秒一次
+
