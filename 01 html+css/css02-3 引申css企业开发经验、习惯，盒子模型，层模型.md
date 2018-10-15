@@ -206,7 +206,7 @@ css代码：
 ***
 ***
 <br>
-#盒子模型
+#W3C盒子模型
 
 ![](http://www.runoob.com/images/box-model.gif)
 
