@@ -171,3 +171,67 @@ js代码：
 	</div>
 
 方法：appendChild 
+
+---
+---
+
+##封装getScrollOffset()函数实时返回滚动条x轴和y轴距离
+
+		function getScrollOffset(){
+			if(window.pageXOffset){
+				return {
+					x : window.pageXOffset,
+					y : window.pageYOffset
+				}
+			}else{
+				return {
+					x : document.body.scrollLeft + document.documentElement.scrollLeft,
+					y : document.body.scrollTop + document.documentElement.scrollYop
+				}
+			}
+		}
+
+
+---
+---
+ 
+#简单的自动阅读功能
+
+		
+		<div style="width:100px;height: 100px; background-color: orange;color: black;font-size: 40px;font-weight: bold;text-align: center;line-height: 100px;position: fixed;bottom: 200px;right: 50px;border-radius: 50%;opacity: 0.5; ">start</div>
+
+		<div style="width:100px;height: 100px; background-color: orange;color: black;font-size: 40px;font-weight: bold;text-align: center;line-height: 100px;position: fixed;bottom: 50px;right: 50px;border-radius: 50%;opacity: 0.5; ">end</div>
+		
+		
+		<script type="text/javascript">
+			var start = document.getElementsByTagName('div')[0];
+			var timer = 0;
+			var key = true;
+			start.onclick = function(){
+				if(key){
+					timer = setInterval(function(){
+						window.scrollBy(0,10);
+					},100);
+				}
+				key = false;
+			}
+			var end = document.getElementsByTagName('div')[1];
+			end.onclick = function(){
+				clearInterval(timer);
+				key = true;
+			}
+		</script>
+
+
+---
+---
+
+#封装兼容性方法getStyle(elem,prop)，用于查询某一对象的某种样式值
+	
+		function getStyle(elem, prop){
+			if(window.getComputedStyle) {
+				return window.getComputedStyle(elem, null)[prop];
+			}else{
+				return elem.currentStyle[prop];
+			}
+		}

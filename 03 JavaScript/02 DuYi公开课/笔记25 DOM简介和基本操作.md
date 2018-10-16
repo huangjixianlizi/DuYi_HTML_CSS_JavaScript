@@ -158,6 +158,7 @@ DocumentFragment  ——  11
 
 #DOM其他操作：
 
+
 ##查看滚动条的滚动距离
 	
 		window.pageXOffset/pageYOffset
