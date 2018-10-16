@@ -158,6 +158,14 @@ DocumentFragment  ——  11
 
 #DOM其他操作：
 
+##查看滚动条的滚动距离
+	
+		window.pageXOffset/pageYOffset
+				IE8及IE8以下不兼容
+		document.body/documentElement.scrollLeft/scrollTop
+				兼容性比较混乱，用时取两个值相加，因为不可能存在两个同时有值
+		封装兼容性方法，g求滚动轮滚动距离getScrollOffset()
+
 ##查看视口的尺寸
 		
 		window.innerWidth/innerHeight
@@ -174,7 +182,8 @@ DocumentFragment  ——  11
 ##查看元素的几何尺寸
 
 		domEle.getBoundingClientRect();
-			兼容性很好
+
+		兼容性很好
 		
 		该方法返回一个对象，对象里面有left,top,right,bottom等属性。left和top代表该元素左上角的X和Y坐标，right和bottom代表元素右下角的X和Y坐标
 		
