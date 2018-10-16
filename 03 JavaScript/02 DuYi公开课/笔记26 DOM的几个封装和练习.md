@@ -235,3 +235,31 @@ js代码：
 				return elem.currentStyle[prop];
 			}
 		}
+
+---
+---
+
+#通过使用自己封装的getStyle()以及getComputedStyle()实现元素的移动
+
+	<div style="width: 100px;height: 100px;background-color: red;position: absolute;left: 0;top: 0;"></div>
+	
+	<script type="text/javascript">
+		function getStyle(elem, prop){
+			if(window.getComputedStyle) {
+				return window.getComputedStyle(elem, null)[prop];
+			}else{
+				return elem.currentStyle[prop];
+			}
+		}
+	
+		var div = document.getElementsByTagName('div')[0];
+	
+		setInterval(function() {
+			div.style.left = parseInt(getStyle(div,'left'))+10+'px';
+			if(parsetInt(div.style.left) > 800){
+				clearInterval(timer);
+			}
+		},100);
+	
+	
+	</script>
