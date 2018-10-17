@@ -1,4 +1,15 @@
-// 封装阻止默认事件的函数 cancelHandler(event);
+
+// 封装阻止默认事件发生的函数
+function cancelHandler(event){
+	if(event.preventDefault){
+		event.preventDefault();
+	}else{
+		event.returnValue = false;
+	}
+}
+
+
+// 封装取消事件冒泡的函数
 function stopBubble(event){
 	if(event.stopPropagation){
 		event.stopPropagation();
@@ -8,7 +19,7 @@ function stopBubble(event){
 }
 
 
-// ####封装兼容性的 addEvent(elem, type, handle);方法
+// 封装兼容性的 addEvent(elem, type, handle);方法
 // 给一个dom对象添加该事件类型的处理函数（绑定事件）
 function addEvent(elem, type, handle){
 	if(elem.addEventListener) {
