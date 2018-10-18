@@ -1,4 +1,30 @@
 
+// ==================================================================
+// //拖拽函数
+// function drag(elem) {
+// 		var disX,
+// 			disY;
+// 		addEvent(elem, 'mousedown', function(e){
+// 			var event = e || window.event;
+// 			disX = event.clientX - parseInt(getStyle(elem, 'left'));
+// 			disY = event.clientY - parseInt(getStyle(elem, 'top'));
+// 			addEvent(document, 'mousemove', mouseMove);
+// 			addEvent(document, 'mouseup', mouseUp);
+// 			stopBubble(event);
+// 		});
+// 		function mouseMove(e) {
+// 			var event = e || window.event;
+// 			elem.style.left = event.clientX - disX + "px";
+// 			elem.style.top = event.clientY - disY + "px";
+// 		}
+// 		function mouseUp(e) {
+// 			var event = e || window.event;
+// 			removeEvent(document, 'mousemove', mouseMove);
+// 			removeEvent(document, 'mouseup', mouseUp);
+// 		}
+// 	}
+// ==================================================================
+
 // 封装阻止默认事件发生的函数
 function cancelHandler(event){
 	if(event.preventDefault){
@@ -24,7 +50,7 @@ function stopBubble(event){
 function addEvent(elem, type, handle){
 	if(elem.addEventListener) {
 		elem.addEventListener(type, handle, false);
-	}else if() {
+	}else if(elem.attachEvent) {
 		elem.attachEvent('on' + type ,function() {
 			handle.call(elem);
 		})
@@ -131,7 +157,7 @@ function getStyle(elem, prop){
 		return elem.currentStyle[prop];
 	}
 }
-
+// ==================================================================
 // #通过使用自己封装的getStyle()以及getComputedStyle()实现元素的移动
 
 // 	<div style="width: 100px;height: 100px;background-color: red;position: absolute;left: 0;top: 0;"></div>
@@ -151,6 +177,7 @@ function getStyle(elem, prop){
 // 			}
 // 		},100);	
 // 	</script>
+// ==================================================================
 
 
 //封装一个工具类type();
@@ -229,7 +256,7 @@ function clone(origin,target) {
 	return target;
 }
 
-// 圣杯模式 =====================【最完美的继承模式】
+// 圣杯模式 ===========================================【最完美的继承模式】
 			//样例：
 			// Father.prototype.lastName = 'Deng';
 			// function Father() {}
@@ -262,6 +289,4 @@ function inherit(Target, Origin) {  //封装一个继承函数（方法）方便
 			// 		Target.prototype.uber = Origin.prototype;  
 			// 	} 
 			// }());
-
-
-//未完待续
+// ==================================================================
