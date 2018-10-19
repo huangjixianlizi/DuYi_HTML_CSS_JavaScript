@@ -20,7 +20,7 @@ JSON.stringify(); json — > string
 
 **javascript 异步加载 的 三种方案**
 
-- 1 defer 异步加载，但要等到dom文档全部解析完才会被执行。只有IE能用。
+- 1 defer 异步加载，但要等到dom文档全部解析完才会被执行。只有IE能用，也可以将代码写到内部。
 - 2 async 异步加载，加载完就执行，async只能加载外部脚本，不能把js写在script 标签里。
 - 1.2 执行时也不阻塞页面
 - 3 创建script，插入到DOM中，加载完毕后callBack，
@@ -50,3 +50,7 @@ js时间线
 
 - 10、从此，以异步响应方式处理用户输入、网络事件等。
 
+
+		window.onload = function () {}    dom加载完
+		
+		$(document).ready(function(){})   dom解析完
