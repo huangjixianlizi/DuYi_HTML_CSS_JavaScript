@@ -29,5 +29,10 @@
 
 [数组的反转与排序](https://my.oschina.net/u/3953786/blog/2247925)
 
+[数组过滤与逻辑判断](https://my.oschina.net/u/3953786/blog/2249370)
+
+[数组剪切与索引位置](https://my.oschina.net/u/3953786/blog/2249361)
+
 [不一般的块级作用域](https://my.oschina.net/u/3953786/blog/2247029)
+
 
