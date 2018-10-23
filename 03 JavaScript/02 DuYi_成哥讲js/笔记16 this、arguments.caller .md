@@ -40,8 +40,6 @@
 		print();           //234
 		new print();       //123
 
-例三：
-
 
 
 
@@ -51,7 +49,7 @@
 -----
 
 - arguments.callee    指当前函数自身的引用(函数自身)
-- function.caller
+- function.caller   它指向调用当前函数的函数，如果函数是在全局范围内调用的话，那么caller的值为null
 
 
 ###arguments.callee：
