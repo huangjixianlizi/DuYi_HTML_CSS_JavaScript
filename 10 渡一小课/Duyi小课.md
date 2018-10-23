@@ -13,6 +13,8 @@
 
 [Css3之盒模型](http://c7.gg/aLHxf)
 
+[Css3之弹性盒模型初探（一）](https://my.oschina.net/u/3953786/blog/2250630)
+
 [Css3新增背景属性](https://my.oschina.net/u/3953786/blog/2247046)
 
 [数据类型强制转换](https://my.oschina.net/u/3953786/blog/2245970)
@@ -32,6 +34,10 @@
 [数组过滤与逻辑判断](https://my.oschina.net/u/3953786/blog/2249370)
 
 [数组剪切与索引位置](https://my.oschina.net/u/3953786/blog/2249361)
+
+[数组之reduce()和reduceRight()](https://my.oschina.net/u/3953786/blog/2251387)
+
+[转换字符串方法、判断数组类型](https://my.oschina.net/u/3953786/blog/2251377)
 
 [不一般的块级作用域](https://my.oschina.net/u/3953786/blog/2247029)
 

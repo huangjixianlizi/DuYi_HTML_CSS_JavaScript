@@ -1,3 +1,30 @@
+//数组 ： 封装一个myReduce方法
+Array.prototype.myReduce = function(func, init) {
+	var len = this.length,
+		prev = init,
+		i = 0;
+	if(init == underfined){
+		prev = this[0];
+		i = 1;
+	}
+	for(i ; i < len; i++){
+		prev = func(prev, this[i], i, this);
+	}
+	return prev;
+}
+
+
+//数组 ： 封装一个myFilter方法
+Array.prototype.myFilter = function(func) {
+	var newArr = [];
+	for(var i = 0; i < this.length; i++) {
+		if(func(this[i], i)){
+			newArr.push(this[i]);
+		}
+	}
+	return newArr;
+}
+
 
 // ==================================================================
 // //拖拽函数
