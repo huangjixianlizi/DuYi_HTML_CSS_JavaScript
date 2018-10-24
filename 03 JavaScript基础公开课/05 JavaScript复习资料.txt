@@ -1,0 +1,1784 @@
+一、初始JavaScript
+1.Mosaic是互联网历史上第一个普遍使用和显示图片的浏览器1993年问世。
+2.后来由于商标权转让，原本的开发团队又开发了Netscape Navigetor网景浏览器，也是很多浏览器的前身。
+3.JS作为Netscape Navigetor浏览器的一部分首次出现在1996年，最初设计是改善网页的用户体验，作者是Brendan Eich.
+4.起初JS被命名liveScript，后因为跟Son公司合作改名为JavaScript,后来Son公司被Oracle公司收购，所有版权归Oracle所有。
+
+
+二、浏览器的组成
+1.浏览器主要有两部分组成，shell和内核部分，内核还包含了许多东西
+2.渲染引擎，内核里渲染引擎主要负责html和CSS部分，定义了语法规则、渲染规则以及渲染路径和速度等等。
+3.js引擎，2001年发布了ie6，首次实现对js引擎的优化。
+4.2008年Google发布了Chrome，它是采用优化后的js引擎，引擎代号V8，因能把js代码直接转化成机械码0101来执行，进而以速度快而闻名。
+5.后来Firefox也推出了具有强大功能的js引擎
+Firefox 3.5 TraceMonkey（对频繁执行的代码做了路径优化）
+Firefox 4.0 JeagerMonkey
+6.其他模块。
+
+
+三、JavaScript特点
+1.解释性语言——不需要编译代码，可以跨平台，像php、js、jsp都是解释性语言。
+2.单线程——js是单线程的语言，同时只能执行一件事情
+3.ECMA标准——为了统一js的规则，推出了ECMA标准，因此js也称为ECMAScript。
+
+
+四、JavaScript三大部分：ECMAScript、DOM、BOM
+1.ECMAScript是符合ECMA标准的基本javascript。
+2.DOM是Document Object Model文档对象模型，可以操作页面的代码，可以操作html和css部分。DOM是非常非常重要的部分。
+3.BOM是Browser Object Model浏览器对象模型，操作浏览器shell的。因为每一个浏览器厂家的不同，导致我们在每一个浏览器操作BOM都不一样.
+
+
+五、JavaScripr的基本语法
+1.变量声明
+• Js是一种弱数据类型的语言，任何类型的变量都用关键字Var来声明。
+// var arr = [1,2,3];
+// var num = 123;
+// var steing = "abc";
+• 赋值可以在声明的的同时赋值，也可以在后面赋值。
+// var num = 123;
+// var num;
+// num = 123;
+• 这两种方法是一样的。
+• 同时有一种单一Var模式，
+//var num1 = 123,
+//    num2 = 234,
+//    num3 = 456;
+• 变量名上下对齐，这样结构更清晰，也能节省很多代码。
+
+2.变量命名规则
+• 以英文字母开头或者_和$符开头。
+• 变量名可以包含数字
+• 不可以使用系统自带的关键字，保留字
+
+3.值类型———>数据类型
+• 不可改变的原始值
+• 主要有 Number String Boolean undefined null 堆数据
+• 引用值 数组Array 对象Object 函数function 栈数据
+
+六、JavaScrpit语句的基本规则
+1.语句后面要用英文“ ; ”结束
+2.js语法错误会引发后续代码的终止，但不会影响其他的JS代码块，这里仅限于逻辑错误和低级语法错误会导致代码全部执行不了。
+3.书写规范
+
+
+七、JavaScrpit运算符
+1.“ + ”数学上相加的功能和字符串拼接 “ - * / % ” 数学运算。
+2.相同的还有“ ++ == -- += -= > < ...”等等
+3.逻辑运算符 && || ！
+• && 的作用是结果是true的时候才会继续执行，第一个就错了第二不会执行，如果都是true的话返回最后一个 
+• ||的作用是只要有一个表达式是true的，后面的就不走了，并且返回的结果是这个正确的表达式的结果，全是false表达式返回的结果就是false。
+• &&可以当做一种短路语言使用  ||可以当做赋初值的作用。
+4.默认为False的值
+• unedfined null " " NaN 0 false
+
+
+八、类型转换
+壹、显示类型转换
+• 用typeof可以检测数据的类型
+// console.log(typeof(123)); // Number
+• typeof返回的结果有六种：number string boolean undefined object function.
+• 数组和null都属于object
+• NaN属于number，虽然是非数，但是也属于数字
+• typeof返回的结果是字符串
+
+2.Number(mix){美克斯}【混合】
+• 这个方法是可以把其他类型的数据转换成数字类型的数据。
+
+3.parseInt(string,radix) {帕森特 、 rui die KS}【基数】
+• 这个方法是将字符串转换成整型类型数字的。其中第二个参数radix基底是可以选择的参数。
+• 当radix为空的时候，这个函数的作用仅仅是将字符串转换成number类型
+• 当参数string里面既包括数字字符串又包括其他字符串的时候，它会将看到其他字符串就停止了，不会继续转换后面的数字型字符串了。
+// parseInt('123abc123') // 123;
+// parseInt('abc123')    // NaN;
+// parseInt('123')       // 123;
+// parseInt('true')       // NaN;
+• 当radix不为空的时候这个函数可以用作进制转换，把第一个参数的数字当成几进制的数字转换成十进制
+• radix参考范围是2--36
+// var demo = 10;
+// parseInt(demo,16) //16
+
+4.parseFloat(radix){帕斯弗露特}
+• 这个方法和parseInt类似，是将字符串转换成浮点类型的数字，碰到第一个非数字类型停止
+• 只能识别第一个小数点及后面的数字，第二个小数点不能识别
+// parseFloat('123.2.3')  // 123.2
+// parseFloat('132.2abc') // 123.2
+// parseFloat('123.abc1') // 123
+
+5.toString(radix)
+• 这个方法和前面的不同，它是对象上的方法，任何数据类型都可以使用，转换成字符串类型，涉及到包装类
+• 同样是radix基地可选参数，为空仅仅将数据转换成字符串。
+// var demo = 123;
+// typeof demo.toString();  // string123;
+// typeof true.toString();  // stringtrue;
+• 当写了radix时代表要将这个数字转换成几进制的数字型字符串
+// var dome = 10;
+// demo.toString(16) // A
+• undefined和null没有toString方法
+
+6.String(mix)
+• 和Number类似把任何类型转换成字符串
+
+7.Boolean(mix)
+• 和Number类似把任何类型转换为Boolean
+
+贰、隐式类型转换
+1.isNaN()
+• 这个方法可以检测是不是非数类型，调用的Number方法
+
+2.算数运算符
+• ++就是将现有数据调用Number之后，自身加一
+• +  -  *  /  执行之前都会先进行类型转换，换成数字在运算
+
+3.逻辑运算符
+• && || ! 都会调用Boolean转换成布尔值看看结果是ture还是false，返回结果还是本身表达式的结果
+// !abc;    // false 
+4.不发生类型转换的比较运算符
+• ===严格等于   !==严格不等于
+
+
+九、预编译 [precompile]
+• 函数声明提升：函数声明提升是一种整体提升，它会把函数声明和函数体一起提升到前面
+• 变量声明提升：变量声明提升是一种局部提升，它仅仅将变量的声明提前了，但是并没有将赋值一起提升
+
+1.JS运行三部曲
+• 语法分析
+• 预编译
+• 解释执行
+
+2.预编译前奏
+• imply global {In 普莱 、 苟楼卜}  
+• 暗示全局变量，如果任何变量未经声明就赋值使用，此变量归Window所有，并且成为Window对象的一个属性
+• 一切声明的全局变量，都是Window属性
+• 未经声明的全局变量可以用delete操作来删除
+• 函数在执行的前一刻产生一个上下文，Activeaction Object对象
+• 这个对象是空的，但是里面有一些看不见的隐式属性：this:window属性和arguments[];属性
+
+3.预编译四部
+• 创建AO对象
+• 寻找形参和变量声明并当做属性名添加到AO对象中，值为undefinen。 //函数声明不叫变量
+• 将实参形参相统一
+• 在函数体里寻找函数声明，将函数名当做属性名，值为这个函数的函数体
+// function test (a,b) {
+//    console.log(a)
+//    function a () {}
+//    a = 222;
+//    console.log(a)
+//    function b () {};
+//    console.log(b)
+//    var b = 111;
+//    var a;
+// } 
+// test(1);
+• var b = function () {} 这种不叫函数声明，这个函数是给b赋值的，b变量是声明
+• 在第四步寻找函数声明并不会把赋值成function(){},执行到这一行的时候才会赋值成这个函数
+
+十、函数与作用域与闭包
+壹、函数部分
+1.函数声明有3种方式
+• var demo = function () {}; 函数表达式
+• function demo () {}; 函数声明
+• var demo = function xxx () {};命名函数表达式   //没用
+• 每一个函数里面都有一个类数组属性arguments,这个属性里面存的就是实参
+• 每一个函数有一个length属性，这个属性存的是形参的数量
+• 每一个函数都会有一个return，如果不写的话函数会自动加一个return
+• return的功能有两个：返回这个函数的执行结果、终止函数的执行
+// function test(a,b) {
+    console.log(a + b);
+    return;
+    console.log('hello');
+}
+test(1,2);  //  打印结果3   不会打印hello
+
+
+贰、作用域
+• 定义：变量（变量作用域又称为上下文）和函数生效（能被访问）的区域
+• javaScriot的函数是可以产生作用域的！
+• es5中的作用域只有全局作用域和函数作用域两种，es6新添加的块级作用域
+// var demo = 123;  // 全局变量
+// function test () {
+// var demo = 234; // 局部变量
+// console.log(demo);
+// var demo1 = 'hello';
+// }
+// test(demo);  // 打印234    就近打印局部变量，没有局部变量打印全局变量
+// console.log(demo1); // 报错 我们的全局作用域无法访问局部作用域
+• 函数作用域就好像一个屋子，里面的可以拿外面的东西，外面的不能拿里面的东西
+• 在函数作用域里声明变量没有用var的话，那么就生成了一个全局变量
+• 两个不同的作用域（除了全局作用域）是不能相互访问的
+
+
+叁、作用域链 （scope chain）{S狗扑 chen}
+• 既然函数存在作用域，函数有可以嵌套，那么作用域直接就会产生嵌套关系，这个时候就产生的作用域链
+• 当代码在一个环境中执行时，会创建变量的一个作用域链来保证对执行环境有权访问的变量和函数的有序访问
+• 作用域链第一个对象始终是当前执行代码所在环境的变量对象
+// function demo () {
+//    var dome_a = 1;
+//    function test () {
+//        var demo_a = 2;
+//        console.log(demo_a);
+//    }
+//    test();
+// }
+// demo();
+• 本着对执行环境的有权和有序访问，每个函数的自身作用域总在作用域链的最顶层，下一层就是这个函数的父级函数作用域...直到全局作用域
+• 因此test执行的时候打印的demo_a是本身作用域中的'2'而不是'1'如果自身作用域没有demo_a的话系统就会沿着作用域链向下找到dome作用域的demo_a
+
+
+肆、闭包 [closure]
+1.什么是闭包
+• 闭包就是能够读取其他函数内部变量的函数
+• 不同的作用域之间不能互相访问，但是如果在一个函数内部在定义一个函数并且这个内部函数与外部函数的变量有所关联，
+  那么就可以返回这个函数来访问外部函数里面的变量，所以在本质上闭包就是将函数内部与函数外部连接起来的桥梁
+// function a (){
+//    var dome1 = 123;
+//    add = function(){
+//        demo1 ++;
+//    }
+//    return function(){
+//        console.log(demo1);
+//    };
+// }
+var demo = a ();
+demo();    // 123
+add();   
+demo();    // 124
+• 当函数执行完函数的执行上下文就会被销毁，自然就无法访问里面的变量了，但是我们这个函数返回了一个依赖于这个函数的新函数，
+  也就是说这个没有被销毁的新函数的作用域链中存在着原本函数作用域的引用，就导致原本函数的上下文不会被销毁，返回的新函数是原本函数的闭包函数
+
+2.使用闭包的注意点
+• 闭包会使函数的变量都保存在内存中，内存消耗很大，不能滥用闭包，否则会造成网页的性能问题，IE会造成内存泄漏
+  解决的方法就是在退出函数时，将不使用的局部变量全部删除
+• 闭包会在父函数外部改变父函数内部的值，如果把闭包当对象使用，那么就把闭包当做它的公用方法，把内部变量当做它的私有属性。
+ （不要随便改变父函数内部变量的值）
+// var name = 'global';
+// var obj = {
+//     name:'obj',
+//     getName:function () {
+//         return function () {
+//             console.log(this.name);
+//         }
+//     }
+// }
+// obj.getName()();    
+• 累加器的例子
+// function a () {
+//     var num = 1;
+//     function addNum () {
+//         num ++;
+//         console.log(num);
+//     }
+//     return addNum;
+// }
+// var demo = a ();
+// demo();
+// demo();
+// var demo1 = a();
+// demo1();
+// demo1();
+
+
+伍、立即执行函数
+• 立即执行函数是解闭包的一个重要方法，但是注意闭包是没有办法解除的，只能通过一个新的闭包来消除上一个闭包的影响
+• 立即执行函数不需要被定义，直接执行，执行完释放，经常用作初始化
+• 函数声明不能被执行，但是函数表达式可以
+// (function (){}())
+——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// function returnB() {
+//     var arr = [];
+//     for(i = 0; i < 10; i ++){
+//         arr[i] = (function(){
+//             console.log(i);
+//         }())
+//     }
+//     return arr;
+// }
+// var save = returnB();
+// console.log(save);
+// for(j = 0; j < 10; j ++){
+//     save[j];
+// }
+
+
+十一、对象、构造函数与包装类
+1.对象的创建方式有三点
+• 对象字面量
+// var obj = {};
+• 这样的方式是最简单最常用的方法
+• 对象里面有属性，属性之间用逗号相隔，每条属性都有属性名和值，属性名和属性值用分号分隔
+
+2.构造函数 [constructor]
+• 构造函数也分为两种，系统自带的构造函数和自定义的构造函数
+• 创建对象的构造函数Object（）
+// var object = new Object();
+通过这条语句就创建了一个空对象，它的作用和 var obj = {}; 的作用一样
+• 系统自带的构造函数还有Number(),String(),Boolean(),Array()
+
+3.自定义构造函数
+• 自定义的构造函数是最常用的一直构造函数
+// var function Person () {};
+// var operson = new Person ();
+// typeof operson  // object
+• 用new操作符创造出来的对象，尽管使用的是一个构造函数，但是之间没有关联
+// function Person (name,age) {
+//     this.name = name;
+//     this.age = age;
+// }
+// var person = new Person('zhangsan',18);
+// console.log(person.name);
+• 创建对象的时候只有new才会有this
+• 重点：为什么可以用new操作符创建出相互独立的对象呢?
+• 用new操作符的时候，这个new在构造函数里面隐式的创建了一个this对象，并且最后返回了这个this对象。
+  function Person (name) {
+        //var this = {};
+        this.name = name;
+        //return this;
+  }
+• 如果在构造函数首行手动创建一个对象，比如that对象，然后返回that，那么里面的this就没用了，属性赋值就用that了
+// function Person (name) {
+//     var that = {
+//         name: 'lisi'
+//     };
+//     that.name = name;
+//     return that;
+// }
+// var person = new Person ('demo');
+// console.log(person.name)
+• 如果最后返回的是对象，那么this就失效，但是如果显示返回的是原始值那么this还是有效的
+
+4.属性的增删改查
+• 增：可以通过对象名+点属性名的方法来给对象添加新的属性并且赋值
+// var obj = {};
+// obj.name = 'xiaoming'
+• 改：修改的操作和增加是一样的，只要调用相同的属性名然后赋一个新值就可以了
+// var obj = {
+//   nama:'demo';
+// }
+// obj.mame = 'tan';
+• 查：查看属性的功能 console.log(xxx)
+• 删：删除属性需要借助delete操作符
+// var obj = {
+//     name = 'scerlett'
+// }
+// obj.name;  // scerlett
+// delete obj.name;
+// obj.name;  // undefined
+• 包装类
+• So Seay !!!
+
+
+十二、原型与原型链
+壹、原型：prototype
+1.原型的定义：原型是function对象的一个属性，它定义了构造函数制造出来的对象的公有祖先，通过该构造函数产生的对象，
+  可以继承该原型的属性和方法，原型也是对象
+// function Person () {}
+• 定义一个构造函数，Person.prototype这个属性就是这个构造函数的原型，这个属性天生就有的，并且这个属性的值也是一个对象
+• 可以在person.prototype上面添加属性和方法，每一个构造出来的对象都可以继承这些属性和方法
+• 虽然每一个对象都是独立的，但是他们都有共同的祖先，当访问这个对象属性的时候，如果他没有这个属性，就会向上查找，
+  找到它原型，然后在原型上访问这个属性
+2.利用原型特点可概念，可以提取公有属性
+• 可以吧每一个对象都有的公有属性不写在构造函数里面，而是提取到原型上，这样当构造函数构造大量的对象的时候就不需要走多次构造函数里面的赋值语句了
+  而只需要走一遍，每个对象调用属性的时候直接上原型上查找就可以了
+
+3.对象如何查看原型
+• 用构造函数构造对象的时候，就会隐式创建一个this对象，这个this对象里面有一个默认的属性叫做proto属性，这个属性的值就是指向对象的原型
+• 当查找的属性是自身没有的属性的时候，就会查找proto这个属性，然后这个属性指向原型，所以就到原型上查找属性了
+• 注意：prototype是函数的属性，proto是对象的属性
+
+4.如何查看构造自身的构造函数
+• 在prototype里面，有一个隐式的属性叫做constructor,这个属性记录的就是对象的构造器，里面存的就是构造函数
+// console.log(person.constructor);     //Person();
+
+贰、原型链
+1.有了原型，原型还是一个对象，那么这个名为原型的对象自然还有自己的原型，这样的原型上还有原型的结构就构成了原型链
+// Gra.prototype.firsName = 'scarlett'
+// function Gra () {
+//     this.name = 'grandfather';
+//     this.sex = 'male';
+// }
+// var grandfoo = new Gra();
+// // garndfoo.word = 'hello'
+// Foo.prototype = grandfoo;
+// function Foo () {
+//     this.age = '18';
+//     this.money = '100';
+// }
+// var father = new Foo();
+// function Son () {
+//     this.name = 'son';
+// }
+// Son.prototype = father;
+// var son = new Son();
+• Foo创造出来的每一个对象都继承来自grandfoo对象，son的每一个对象都继承来自father这个由Foo创造出来的对象，
+  这样son就可以继承上面Foo和Gra的所有属性
+• 这种链式的查询结构叫做原型链，最终的尽头是Object.portotype这个对象
+• 如果没有规定原型的对象，它的原型就是Object.prototype
+
+2.但是并不是所有的对象都有原型，比如使用Object.create方法
+• Object.create()方法需要写一个参数，这个参数就是这个对象的原型，如果要构造一个和var obj = {};一样的对象，就需要写：
+// var obj =Object.create(Object.prototype);
+• 也可以写一个自定义的属性，让他成为原型
+
+ 不懂！！！！！！！！！！！！！！！！！！！！！！！！
+
+3.原型链上的增删改查
+// Person.prototype.arr[1,2,3];
+// var person1 = new Person();
+// var person2 = new Person();
+// person1.arr.push(4);
+// console.log(person2);  // 1 2 3 4
+• 删：删除属性需要借助delete操作符，对象不能删除原型上的属性
+
+！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
+
+十三、继承、this
+1.this的一些问题：
+• 函数内部的this默认指向window，可以使用call / apply来改变this的指向 区别：后面传参形式不同
+// function person () {
+//     this.name = 'scarlett';
+//     console.log(this);
+// }
+// person();
+• 现在this指向window,name属性自然就是window上的全局属性
+// var obj = {};
+// person.call(obj);  //Object.{name:'scarlett'}
+• 如果这个函数还有参数的话，只要把实参的值写在call后面并且用逗号隔开
+// function person(name,age){
+//     this.name = name;
+//     this.age = age;
+// }
+// var obj = {};
+// person.call(obj,'scarlett',18);
+// console.log(obj.name);
+• apply和call基本没什么区别，唯一的区别就是call后面的参数是一个一个传的，而apply后面的参数是放在数组里
+// person.apply(obj['scarlett',18]);
+
+2.继承 [inherit]
+//圣杯模式
+// function inherit(Target, Origin) {
+//     function F() {};
+//     F.prototype = Origin.prototype;
+//     Target.prototype = new F();
+//     Target.prototype.constuctor = Target;让constuctor指向自己的
+//     Target.prototype.uber = Origin.prototype; 超类，知道自己继承的是谁
+//
+// yahu封装方法；
+// var inherit = (function (){
+//     var F = function () {};
+//     return function (Target, Origin){
+//         F.prototype = Origin.prototype;
+//         Target.prototype = new F();
+//         Target.prototype.constuctor = Target;
+//         Target.prototype.uber = Origin.prototype;
+//     }
+// }());
+// 
+//         for (var i = 0; i < 5; i ++) {
+//             var btn = document.createElement('button');
+//             btn.appendChild(document.createTextNode('Button' + i));
+//             btn.addEventListener('click', function(){console.log(i); });
+//             document.body.appendChild(btn);
+//         }
+
+
+十四、对象的枚举与this
+1.对象的枚举
+• 查看对象属性可以用obj.name查看，也可以用obj['name']类数组方式查看，但事实上是数组模仿了对象的查看方式
+
+2. for-in操作符
+• 要枚举一个数组的所有属性只需要用一个for循环从头到尾遍历一遍就可以了
+  但是对象并不能用for循环来遍历属性，所有就要用到for-in操作了
+// var obj = {
+//     name: 'scarlett',
+//     age: 18,
+//     sex: 'female'
+// }
+// for(var prop in obj){
+//     console.log(prop + ':' + obj[prop]);
+// }
+• for-in循环会按照属性的顺序取出属性名然后赋给prop，所有打印prop都是属性名，obj[prop]则是相对应的属性的值
+• 注意：这里不能写成obj.prop方式，因为在系统底层会转化成obj['prop']的形式，但是并没有prop属性，它只是一个变量，
+  所以会打印undefined，这里必须使用obj['prop']
+• 在非严格模式中，for-in循环都会把原型里面的一些属性一起打印出来，但es5的严格模式不会
+
+2.三种操作符
+• hasOwnProperty 这个操作符的作用是查看当前这个属性是不是对象自身的属性，在原型链上的属性会被过滤掉，自身的ture
+// function Person() {
+//     this.name = 'scarlett'
+// }
+// Person.prototype = {
+//     age:18
+// }
+// var oPerson = new Person();
+// for (var prop in oPerson) {
+//     if (oPerson.hasOwnProperty(prop)){
+//         console.log(oPerson[prop]);
+//     }
+// }
+• 这样for-in循环就只会打印自身的属性，而不会打印原型上的属性
+
+• in 操作符：这个操作符的作用是查看一个属性是不是在这个对象或者它原型里面。
+// 'name' in oPerson;    //ture
+// 'sex' in oPerson;   //False
+
+• instanceof操作符：作用是查看前面的对象是不是后面的构造函数构造出来的，和constructor很像
+// oPerson intanceof object;    // ture
+// {} instanceof oPerson;  // false
+
+3.this
+• 预编译过程中this指向window
+• 全局作用域里this指向window
+• call/apply可以改变this指向
+• obj.func() func()里的this指向Obj
+// var obj = {
+//     height:190,
+//     eat:function () {
+//         this.height ++;  // eat在没有执行之前，谁也不知道this指向谁
+//     }
+// }
+// obj.eat(); // 谁调用this，this指向谁
+// eat.call(obj); // eat里面的this指向obj
+
+• 如果能理解下面的这段代码的this指向问题，那么就掌握的this的所有知识点了
+// var name = '222'
+// var a = {
+//     name:'111',
+//     say:function () {
+//         console.log(this.name);
+//     }
+// }
+// var fun = a.say;
+// fun();   // 此处其实就是把a.say这个函数体赋给fun这个函数，相当于在全局空间写下了一个fun函数，此时this指向window，打印'222'
+// a.say();  // 按照谁调用指向谁的说法，这里打印'111'
+// var b = {
+//     name:'333',
+//     say:function (fun) {
+//         fun();
+//     }
+// }
+// b.say(a.say); // 其实和在全局调用a.say的函数体方法差不多，打印'222'
+// b.say = a.say;
+// b.say(); // this指向B 所以打印'333'
+
+
+十五、克隆与数组
+1.arguments.callee
+• 这个方法是指代函数本身，当在一些匿名函数或者立即执行函数里面进行递归调用函数本身的时候，由于没有名字，就用这种方式调用
+• 一般当需要通过计算来进行初始化的时候，写一个立即执行函数，当这个立即执行函数还需要递归调用自身的时候，就用这种方式调用
+
+2.function.caller
+// function test () {
+//     console.log(test.caller);
+// }
+// function demo () {
+//     test()
+// }
+// demo();
+• 这是函数本身自带的一个属性，可以指出当前函数的ude运行环境的函数引用，就是这个函数在哪个函数里面执行的，...........
+
+3.克隆 [clone]
+• 克隆和继承有一些区别，克隆是复制出来一摸一样的目标对象又分为浅度克隆和深度克隆
+// function clone (src,tar) {
+//     var tar = tar || {};
+//     for (var prop in src) {
+//         if (src.hasOwnProperty(prop)){
+//             tar[prop] = src[prop];
+//         }
+//     }
+//     return tar;
+// }
+• 当有一个属性是引用值（数组、对象）时按照这种克隆模式，只是把这个引用值的指向赋给了新的目标对象，一旦改变了源对象或目标对象的引用属性
+  另一个也跟着变，这一点就是浅度克隆的缺点
+
+• 深度克隆的原理很简单，只要不克隆引用值的引用而是把引用值也当做一个源对象，把里面的值一个个克隆到目标对象里面，就解决了二者相同指向的问题
+// function deepCopy (src,tar) {
+//     var tar = tar || {};
+//     for (var prop in src) {
+//         if(typeof(src[prop] == 'object')){
+//             tar[prop] = (src[prop].constructor === Array) ? [] : {};
+//         }else{
+//             tar[prop] = src[prop];
+//         }
+//     }
+//     return tar;
+// }
+• 这个时候目标对象和源对象的引用值就没用关系了，都是独立值可以进行修改
+4.数组 [array]
+• 数组的声明有两种：字面量方式声明数组、通过数组构造函数构造数组
+// var arr = new Array(1,2,3,4);
+// console.log(arr)   // 1 2 3 4
+• 注意：如果在构造函数里面指向一个数字的时候那么这个时候就不是第一个值的意思了，而是数组长度
+• js中的数组是弱类型数组，不可以溢出读，但可以溢出写
+// var arr = [1,2]
+// console.log(arr[3]); // undefined
+// arr [5] = 5;
+// console.log(arr);  // 1,2,,,,5 
+• 数组的常用方法：不可改变原数组和改变原数组
+• 改变原数组的方法有：reverse使数组倒叙、sort快速排序、push在数组最后为添加数据、pop从数组最后一位删除同时返回被删的数据，没有参数、
+  shift从数组最前面删除同时返回被删的数据，没有参数、unshift在数组最前面添加数据、splice这个方法是截取的意思，它有三个参数
+  第一个是截取开始的位置，第二个是截取的长度，第三个参数是一组数据，在截取的位置添加的数据
+// var arr = [1,2,3,4,5];
+// arr.solice[1,2,100,200];
+// console.log(arr); // 1 100 200 4 5
+• sort 它将一种算法封装好给我们使用，可以在这个方法中传入一个参数，这个参数是一个函数，规定了paix规则，否则按照ASC码排序
+// arr -> 1 2 5 4 3 
+// arr.sort -> 1 2 3 4 5 
+• 如果数组中的元素是比较复杂的数据的话，就需要自己来定义排序的规则
+// arr.sort(function (x,y){
+//    return x.gae < y.age;
+// })
+• 这里的x,y代表的数组里任意两位数据，无论中间规则怎么写，系统只关注函数最后返回的值是正数还是负数
+  正数的时候表示b在前面a在后面，负数表示a在前面b在后面，
+• 乱序排序：↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+// function (a,b) {
+//    var num = Math.random() - 0.5;
+//    return num;
+// }
+
+• 不可改变原数组的主要有：concat,join
+• concat这个方法是链接数组的作用,如果要链接多个数组的话中间用逗号相隔
+// var arr1 = [1,2];
+// var arr2 = [3,4];
+// arr = arr1.concat(arr2);
+
+• join这个方法是让数组的每一个数据以什么方式连接成字符串
+// var arr1 = ['a','b','c','1'];
+// arr1 = arr1.join('-');
+// console.log(arr1)  // a-b-c-1  只能链接字符串
+
+• split操作刚好和join相反，split是把字符串以什么方式分割成数组
+// var str = 'How are you';
+// var arr = str.split(" ",2);
+// console.log(arr);  // ["How", "are"]
+
+5.数组去重
+// Array.prototype.unique = function () {
+//     var len = this.length,
+//     arr = [],
+//     obj = {};
+//     for (var i = 0; i < len; i ++) {
+//         if(!obj[this[i]]){
+//             obj[this[i]] = 1;
+//             arr.push(this[i]);
+//         }
+//     }
+//     return arr;
+// }
+// var arr = [1,1,2,21,23,23,1,2,33,33,55,55,4,4]
+// console.log(arr.unique());
+• 这里运用了一个简单的哈希结构，当数组中的这个数据出现过一次之后，就在obj中将这个元素的值的位置标为1，
+  后面如果出现相同的属性，因为这个位置已经是1了，就不会添加到新数组里，达到去重的效果
+
+• ES5的数组方法：forEach   map   filter   every和some  reduce和reduceRight
+• forEach这个方法会改变原数组，它让数组中的元素从头到尾遍历一遍，每一个都调用一下在forEach里面的方法，中间不会停止
+// var arr = [1,2,3,4,5];
+// arr.forEach(function () {
+//     arr[i] += 1;
+// })
+// console.log(arr);
+• map这个方法和forEach很像，只不过forEach会改变原数组，map不会改变原数组，而是返回一个新的数组，它也是传递一个指定的方法
+  让数组中的每一个元素都调用一遍这个方法，  map有返回值
+// var arr = [1,2,3];
+// var test = arr.map(function (x) {
+//     return x*x;
+// })
+// console.log(test); // 1 4 9
+// console.log(arr);  // 1 2 3
+
+• filter这个方法是过滤的作用，它不会改变原数组，而是返回一个数组的子集，同样会传递一个方法，每一个元素都调用一下这个方法，
+  但是只有返回true的元素才会被添加到新数组里面，返回false的不会被添加到新数组里
+// var a = [1,2,3,4,5];
+// var b = a.filter(function (x) {
+//     return x > 2;
+// })
+// console.log(b);  // 3 4 5 
+
+• every和some这两个方法是数组的逻辑判定，它们对数组应用指定的函数进行判定，返回true或flase，
+  every是如果每一个元素经过传递的方法的判断都是true的时候，才会返回true
+  some是只要有一个返回true，就会返回true
+// var arr = [1,2,3];
+// console.log(arr.some(function(x){return x < 3}));
+// console.log(arr.every(function(x){return x < 3}));
+
+• reduce()和reduceRight()方法使用指定的函数将数组元素进行组合，最后变成一个值，reduce是从左向右，
+  reduceRight是从右向左，有两个参数，第一个是方法，第二个是可选参数，即最后的这个值的初始值
+  当没有设置参数的时候，用数组的第一个元素的值作为初始值，不过当数组为空时，不带初始值就会报错
+  当数组只要一个元素并且没有指定初始值，或者有一个空数组并且指定一个初始值的情况下，reduce只是简单的返回那个值，而不会调用函数
+// var arr = [1,2,3];
+// var sum = a.reduce(function(x,y){return x + y},0); //0 + 1 + 2 + 3 = 6
+// var temp = [1];
+// var temoOut = a.reduce(function(x,y){return x * y}); //1 不会调用这个函数，因为数组只有一个值，除非设置一个初始值
+
+6.数组类型的检测
+• 在ES5中，有一个isArray()方法来检测是否是数组，但在ES5之前要检测是否是数据类型很麻烦
+  typeof运算符，数组和对象都会返回object，无法分清数组和对象
+  constructor和instanceof操作符是目前为止最好用的，但都存在潜在问题
+  web浏览器中可能有多个窗口或窗体，每一个窗体有自己的js环境，有自己的全局对象，并且每个全局对象有自己的构造函数
+  因此一个窗体中的对象将不可能是另外窗体中的构造函数的实例，窗体之间的混淆不常发生，但这个问题已经证明了constructor和
+  instanceof都不能真正可靠的检测数组类型
+// Object.prototype.toString.call(arr) ==='[object Array]'
+• 这是最可靠的检测是否是数组类型的方法
+
+
+十六、类数组与严格模式
+• 有两种数据叫做数组和对象，其实可以用对象来模拟出数组的效果，这种对象就叫做类数组，前面提到的arguments就是类数组
+
+1.类数组：
+• 类数组并不是一个数组，但是它可以表现出数组的特性
+// var arrObj = {
+//     '0' : 1,
+//     '1' : 2,
+//     '2' : 3,
+//     'length' : 3,
+//     'push' : Array.prototype.push
+// }
+• 这样就创造出了一个类数组
+// arrObj.push(4);
+// console.log(arrObj);
+ --->>
+// var arrObj = {
+//     '0' : 1,
+//     '1' : 2,
+//     '2' : 3,
+//     '3' : 4,
+//     'length' : 4,
+//     'push' : Array.prototype.push
+// }
+• 它自动改变了length值，其实类数组的关键就在length属性上，如果没有length属性，那么就是一个普通的对象，即使有push也不能用
+• 模拟一下数组的push方法怎么实现的
+// Array.prototype.push = function (num) {
+//     this[this.length ++] = num;
+// }
+• push的方法就是在数组的最后一位添加一个值，也就是length位置加一个元素，然后把length加一，这样就不难理解为什么有了length属性的对象
+  可以调用数组的push方法了，因为它本身有一个合法的length属性，
+// var arrObj = {
+//     '3': 1,
+//     '4': 2,
+//     'a': 3,
+//     'b': 4,
+//     'length':2,
+//     'push':Array.prototype.push
+// }
+// arrObj.push(3);
+// arrObj.push(6);
+仔细看一下push的方法后就知道最后的arrObj最后应该是这个样子的
+// var arrObj = {
+//     '2': 3,
+//     '3': 6,
+//     '4': 2,
+//     'a': 3,
+//     'b': 4,
+//     'length':4,
+//     'push':Array.prototype.push
+// }
+• 这里的length是2，所以一开始push（3）的时候把arrObj[2]改成了3，因为没有2这个下标，所以添加一条属性2 : 3,
+  然后length变成了3，push[6]之后，arrObj[3]变成了6，本身有3所以被覆盖，然后length变成4
+
+2.try...catch
+• try {},  catch (e) {},  finally{}一般是用来检测可能出错的问题的，可以把可能出错的代码放在try里面，
+  然后如果出错会产生反应的代码放在catch里面，finally就是当catch走完之后再走一下finally代码块，finally用处不是很大
+• catch的参数e一定要写上，系统会自动传进去错误信息，错误信息一般分为6种：
+  EvalError eval() 的使用和定义不一致
+  RangeError 数组越界
+  ReferenceError 非法或不能识别的引用数值     //常
+  SyntaxError 发生语法解析错误               //见
+  TypeError 操作数类型错误
+  URIError URI处理函数使用不当
+• 当try里面的代码出错了，try里面出错代码后面的代码就不会执行了，但在try外面的还可以正常执行
+// tyr{
+//         console.log(a);
+//     }catch (e) {
+//         console.log(e) //ReferenceError:a is not defined(...)
+//     }
+
+3.es5严格模式
+• es5严格模式是一种全新的es5规范，在这个模式下，有一些es3的不标准规则就不能使用了
+• 只要写上“use strict”;这一行字符串就可以进入严格模式了，不会对不兼容严格模式浏览器产生影响，主要有两种用法：
+• 全局严格模式：就是在js代码的第一行写上字符串   不推荐使用
+• 局部严格模式：就是在函数里的第一行写上字符串 
+• 严格模式有什么作用：
+• 当代码进入严格模式后，就不允许使用with函数，arguments.callee方法，function.caller属性
+• 变量赋值之前必须声明
+• 局部的this使用之前必须被赋值，除了全局的this默认指向window，其他的默认都是undefined，而且在非严格模式下
+  Person.call(null/undefined)之后，里面的this还是指向window，但是如果是严格模式那么传递null/undefinde，this就指向null/undefined
+• 拒绝重复属性和参数，不过有一些浏览器的属性名可以重复
+
+• with方法是改变作用域链，它可以吧括号里面的执行期上下文或者作用域放在自己的作用域最顶端
+// var obj = {a:123};
+// function test () {
+//     var a = 111;
+//     var b = 222;
+//     with(obj){
+//         console.log(a);   // 123
+//         console.log(b);   // 222
+//     }
+// }
+// test();
+• 本来没有with的话，在test函数里面作用域链的最顶端应该是自身，下面才是window的作用域，但是有了with就会优先调用obj里面的a
+
+
+
+
+十七、DOM开始！！！
+• DOM的全称Document  Object   Model 文档 对象 模型 Dom定义了表示和修改文档所需的对象，这些对象的行为和属性以及这些对象之间的关系
+• Dom对象即为宿主对象，由浏览器厂商定义，用来操作html和css功能的一类对象和集合，浏览器厂商大部分都遵循了W3C的规则
+
+1.DOM如果操作html
+• document代表整个文档，它也是一个dom元素，dom可以对html做一些增删改查的操作
+• css中有id class 标签等选择器，同样document对象上也有很多定义了类似的方法查看元素节点
+
+2.getElementById
+• document.getElementById('id');方法是通过元素的id来选择相对应元素的，因为id是唯一标示，所有方法名是Element
+  在IE8以下的浏览器中，不区分大小写，而且通过name也能当做ID选择出来
+
+3.getElementsByClassName
+document.getElements.ByClassName('calss');获取到的是一个类数组，因为很多元素都可以用一个类名，可以通过【】的方法具体到哪一个元素
+// <div class="dome"></div>
+// <div class="dome dome1"></div>
+// <div class="dome1"></div>
+// var div = document.getElementsByClassName('dome')[1];
+// console.log(div); 
+• 想选出中间的div也可以写document.getElementsByClassName('dome dome1')[0]; document.getElemensCalssName('可以写很多类名')IE8以下不行
+
+4.getElemensByTagName
+• document.getElemensByTagName('div');这个方法是可以选择出来具体某一种元素的集合，这个就可以选择出所有的div，当然也是一个类数组
+  所有浏览器都兼容！！！
+
+5.getElemensByName
+• document.getElemensByName('name')只有部分标签适用，表单，表单元素，img,iframe等  不常用
+• 这里最常用的就是getElemenById 和 getElemensByTagName 因为所有浏览器都支持
+
+6.querySelector()  和  querySelectorAll()
+• 选择元素最强的是CSS，而这两个里面写的参数就是CSS选择器的写法，
+// document.querySelector('div p #demo .demo');
+• 不过querySelector永远选择一组里面的第一个，所以返回的不是一个类数组而是一个具体的元素而如果要返回类数组的话就用querySelectorAll()写法
+• 不过这两个方法的问题在于，它返回的不想前面四个是一个实时改变的的元素，而是一个副本，用这种方法选择出来的元素把本身元素改变而这个不会被改变
+// <div class="content">111</div>
+// <div class="content">222</div>
+// <div class="content">333</div>
+// var div = document.querySelectorAll('.content');
+// var div1 = document.getElementsByClassName('content')[1];
+// console.log(div);   
+// div1.remove();      // 移除第一个div
+// console.log(div);   
+• 在IE7以下版本没有这两个方法
+• 在jQuery里面的选择器，虽然是基于Sizzle的，但Sizzle是基于querySelector写的
+
+贰、节点
+1.节点类型
+• 在页面的节点类型很多，比如：元素节点、文本节点、注释节点、属性节点等等。可以通过nodeType属性来查看这个节点的类型，nodeType返回的是数字
+  元素节点             --->   1 
+  属性节点             --->   2
+  文本节点             --->   3
+  注释节点             --->   8
+  document            --->   9
+  DocumentFragment    --->  11
+
+2.节点的其他属性
+• nodeName这个属性可以返回元素的标签名，以大写形式表示，只读，有几个特殊节点返回的不一样
+  文本节点      --->  #text
+  document节点  --->  #document
+• nodeValue   Text节点或者Comment节点的文本内容，可以读写
+• arrributes 把行间样式间的属性都读取出来，放到一个对象中返回，对象里每一个属性都是一个节点，这个节点就是属性节点
+  注 意：对象里面的属性叫做property，而元素里的属性叫做attributes,实际应该叫特性
+• 节点还有一个方法：hasChildNodes()可以检测是否有节点
+
+2.遍历节点树
+• parentNode查找父节点
+// <div>
+//     <p><strong></strong></p>
+// </div>
+• 这里的P的父节点就是div,div的父节点body，body的父节点是html，html的父节点是document，document的父节点是null，后面就没有了
+• childNodes子节点们
+  div.chileNodes没有说明类型，那么就是说这个方法把所有的子节点都返回
+  // <div>
+  //     <p><strong></strong></p>
+  // </div>
+  div里面的childNodes有三个，第一个是前面的空格---文本节点，第二个是中间的P标签---元素节点，第三个是最后的空格---文本节点
+• firstChild 第一个子节点
+• lastChild  第二个子节点
+• nextSibling 下一个兄弟节点
+• previousSibling 上一个兄弟节点
+• 以上这些方法兼容性很好，所有浏览器都支持，但下面这些就不行了
+
+3.基于元素节点树的遍历
+• parentElement返回当前元素的父元素节点，在这个方法上面，html上面的父元素就不是document而是null了，IE不支持！！！
+• children 所有的子元素节点，这个方法所有浏览器都兼容
+• childElementCount   node.children.length === node.childElementCount，这个属性就是子元素节点的数量，常用的是children。
+• nextElementSibling和previousElementSibling 这两个分别是查找上一个和下一个兄弟元素节点，IE不兼容！！！
+
+叁、DOM树总结
+• getID方法定义在Document.portotype上，即Element上不能使用
+• getElementByName方法定义在HTMLDocument.portotype上，非html中的document不能使用（xml document、Element）
+• getElementsByTagName方法定义在Document.prototype和Element.prototype上,documen和元素都可以使用这个方法
+• HTMLDocument.prototype上定义了一些常用属性，body和head分别代表HTML文档中的<body><head>标签
+• Document.prototype上定义了Document.Element属性，指代文档的根元素，在html文档中，它指代<html>元素
+• getElementByClassName、querySelectorAll、querySelector和Document、Element类中均有定义
+
+
+十八、dom的基本操作代码：
+• 前面介绍了DOM的基本知识，这里是一些上面知识点的封装函数
+
+1.遍历元素节点树：
+    // function retChild (node) {
+    //     var child = node.childNodes,
+    //           len = child.length;
+    //     for (var i = 0; i < len; i++) {
+    //         if (child[i].nodeType === 1) {
+    //             console.log(child[i]);
+    //             child[i].hasChildNodes() && retChild(child[i]);
+    //         }
+    //     }
+    // }
+
+2.返回e的第n层父节点:
+  // function retParent (e,n) {
+  //     var n = n || 0;  // 进行简单的容错检测
+  //     if(n === 0) {
+  //         return e;
+  //     }
+  //     for(var i = 0; e && i < n; i++) {
+  //         e = e.parentNode;
+  //     }
+  //     return e;
+  // }
+
+3.返回元素e的第n个兄弟节点，如果n为正，返回后面的兄弟节点，n为负，返回前面的，n为0，返回自己:
+  // function retSibling(e, n) {
+  //     var n = n || 0;
+  //     if (n === 0) {
+  //         return e;
+  //     }
+  //     while (e && n != 0) {
+  //         if (n > 0) {
+  //             if (e.nextElementSibling) { // 如果不是IE浏览器
+  //                 e = e.nextElementSibling;
+  //             } else {  // 如果是IE浏览器
+  //                 e = e.nextSibling;
+  //                 while (e && e.nodeType != 1) {
+  //                     e = e.nextSibling;
+  //                 }
+  //             }
+  //             n--;
+  //         } else {
+  //             if (e.previousElementSibling) {
+  //                 e = e.previousElementSibling;
+  //             } else {
+  //                 e = e.previousSibling;
+  //                 while (e && e.nodeType != 1) {
+  //                     e = e.previousSibling;
+  //                 }
+  //             }
+  //             n++;
+  //         }
+  //     }
+  //     return e;
+  // }
+
+4.实现childien功能，最好在原型链上编程：
+    // Element.prototype.getChildren = function () {
+    //     var child = this.childNodes,
+    //         len = child.length,
+    //         obj = {
+    //             'length' : 0,
+    //             'push' : Array.prototype.push
+    //         };
+    //         for (var i = 0; i < len; i++){
+    //             if(child[i].nodeType === 1) {
+    //                 obj.push(child[i]);
+    //             }
+    //         }       
+    //         return obj;
+    // }
+
+5.封装是否有元素子节点的方法：
+    // Element.prototype.hasChildern = function () {
+    //     var child = this.childNodes,
+    //           len = child.length;
+    //     for(var i = 0; i < len; i ++) {
+    //         if(child[i].nodeType == 1) {
+    //             return true;
+    //         }
+    //     }
+    //     return flase;
+    // }
+
+
+十九、DOM的基本操作续 ---- 增删该除
+1. 增加操作：创建元素节点createElement
+• 可以通过document.createElement('div');这个方法来创建一个元素，里面的参数填写要创建的标签名称。
+•.创建文本节点document.createTextNode('文本内容')这个方法来创建一个文本节点，里面的参数填写文本内容。
+•.创建注释节点document.createComment('一段注释')
+•.创建文档碎片document.createDocumentFragment这个方法可以创建一个文档碎片，有关提高性能方面会用到这个方法
+
+2.插入操作：
+• appendChild(child);这是父级调用的方法，它会将child元素插入到父级里面，放在逻辑后面的位置
+  如果是创建的元素那么appendchild就会把新元素插入进去，如果DOM已经存在的元素，那么appendchild就是把这个已经存在的剪切掉，放到新的位置
+• insertBefore(a,b);依然是父节点调用的方法，它的意思是将a插入到b前面的位置，要求b要求是这个父级的子节点，可以记做insert a Before b；
+// var span = document.creatElement('span');
+// div.insertBefore(span,comment);
+• 这样就把span元素插入到注释文本前面了
+
+3.删除操作：
+• removeChild这个方法依然是父级调用，参数就是要删除的子节点，实际上是剪切，这个方法会把删除的元素返回，可以用一个变量去报错被删除的元素
+// var div = document.body.ermove(div);
+• 这样div变量就可以保存刚才被删除的div元素
+
+4.替换操作
+replaceChild(new,origin)这个方法同样是父级调用，用新的元素new来替换原来的origin元素，原来被替换的可以用一个变量返回，
+
+5.element节点的属性和方法：
+• 属性：innerHTML:这个属性就是元素里面的html结构。
+// div.innerHTML = '<div>132</div>';
+• 可以通过这个属性来改变元素内部的结构和内容，不过它会直接删除掉以前的所有结构，如果以前内容还有其他节点的话，使用的时候就要小心了！
+• 属性：innerText/textContent:innerText老版本火狐不兼容，textContent老版本IE不兼容
+  这个属性可以直接调出来元素内部的文本信息，如果这个元素还有很多子元素的话，那么子元素的文本信息一块返回
+  需要注意的是，如果要改写innerText或者textContent的话，它会想innerHTML一样，先把内部所有的html结构先删除掉，然后在写入text文本。
+  如果有很多字符串要添加到一个元素内部的话，虽然用innerHTML或者innerText方法，但是却不是用innerHTML +=str的方法，
+  因为+=操作符的效率极低，当字符串很多的时候非常消耗性能，一般用数组的join方法将字符串全部连接成一个字符串，然后一次性写入innerHTML
+
+• 方法：ele.setAttribute();这个方法可以设置元素的属性（特性）比如class、id等一些行间属性
+// div.setAttribute('id','dome')
+• 这个操作就给div元素设置了一个dome的ID。
+• 方法：ele。getAttribute();这个方法是获取元素的行间属性
+  每个元素自带的行间属性都有自己特殊的功能，而我们通过自己给他们设置的属性并没有任何功能，因此可以直接赋予他们功能和用处
+  后面改变元素样式的时候，通常不是直接修改它的css样式，而是事先写好它应该变成的样子，然后装进一个class里面，直接修改它的类名而不是CSS样式
+  
+  
+二十、DOM的基本操作练习代码
+1.用DOM动态生成一个这样的结构：
+  <div class="examople">
+  <p class="slogan"></p>
+  </div>
+•中规中矩的写法是这样的： 
+// var div = document.createElement('div'),
+// p = document.createElement('p'),
+// text = document.createTextNode('hello world');
+// div.setAttribute('class','example');
+// p.setAttribute('class','slogan');
+// p.appendChild(text);
+// div.appendChild(p);
+// document.body.append(div);
+• 小提示：节点的className属性可以读写操作class，因此为标签赋类名的时候可以不用setAttribute,可以直接用className
+// div.className = 'example';
+// p.calssName = 'slogan';
+• 不过还有一个最取巧的方法:直接用innerHTML方法
+// div.innerHTML = <p class = 'slogan'>hello world</p>
+
+2.封装函数InsertAfter();功能类似insertBefore,直接在原型链编程，忽略老版本
+// Element.insertAfter = function (targetNode,afterNode) {
+//     var nextSib = after.nextElementSibling
+//     if(this.children.length <= 1 || !nextSib) {
+//         this.appendChild(targetNode);
+//     }else{
+//         this.insertBefore(targetNode,nextSibling);
+//     }
+// }
+• 这里是利用了原生的insertBefore方法，检测当只有一个子元素或者要找的元素就是最后一个，那么直接调用appendChild方法就可以，
+  否则就找到要找的元素的下一个，然后把它的下一个元素当做insert的元素调用insertBefore方法就可以了。
+
+3.封装remove()函数，使得child.remove()可以销毁自身   （原型链编程）
+// Element.prototype.remove = function () {
+//     var parent = this.parentNode;
+//     parent.removeChild(this);
+// }
+• 找到这个元素的父级，然后让父级删除这个元素
+
+4.将目标节点内部的节点顺序逆序
+<div><p></p><a></a></div>    —>   <div><a></a><p></p></div>
+// Element.prototype.reverseElement = function () {
+//     var len = this.childNodes.length,
+//         child,
+//         first = this.firstChild;
+//     for (var i = 0; i < len - 1; i++) {
+//         child = this.lastChild;
+//         this.insertBefore(child,first);
+//     }
+// }
+• 做法是利用我们插入的元素如果本身就存在的，那么就会剪切到新的位置上这个特性来做的
+
+
+二十一、日期对象与定时器
+1.日期对象：日期对象在W3C上有详细介绍，这里列举一下常用的
+• 日期对象也是javaScript的内置对象之一，可以直接使用
+// var date = new Date();
+• Date()返回当日的日期和时间
+• getDate() 从Date对象返回一个月中的某一天（1 ~ 31）
+• getDay() 从Date对象中返回一周中的某一天（0 ~ 6）
+• getMonth() 从Date对象中返回月份（0 ~ 11）
+• getFullYear()从Date对象以四位数返回年份
+• getHours()返回Date对象的小时（0 ~ 23）
+• getMinutes()返回Date对象的分钟（0 ~ 59）
+• getSeconds()返回Date对象的秒数（0 ~ 59）
+• getMilliseconds()返回Date对象的毫秒（0 ~ 999）
+• getTime()返回距1970年1月1日凌晨的毫秒数
+• setDate()设置 Date 对象中月的某一天 (1 ~ 31)。
+• setMonth()设置 Date 对象中月份 (0 ~ 11)。
+• setFullYear()设置 Date 对象中的年份（四位数字）。
+• setYear()请使用 setFullYear() 方法代替。
+• setHours()设置 Date 对象中的小时 (0 ~ 23)。
+• setMinutes()设置 Date 对象中的分钟 (0 ~ 59)。
+• setSeconds()设置 Date 对象中的秒钟 (0 ~ 59)。
+• setMilliseconds()设置 Date 对象中的毫秒 (0 ~ 999)。
+• setTime()以毫秒设置 Date 对象。
+• 注意：getmonths方法返回的是0-11，要获取当前月份记得加一
+• getTime方法返回的是1970.1.1到现在的毫秒数，这个时间称为时间戳
+
+2.定时器
+• 在javaScript中，与定时器有关的方法是：setInterval、clearInterval以及setTimeout、clearTimeout
+• 这些方法都是定义在window对象上面的，因此写window.setInterval和写setInterval是一样的，前面的window可以省略
+• setInterval这个定时器的功能是每过一段时间，就把要执行的函数放到js执行队列中等待执行，因为执行队列不一定是空的
+  需要等执行队列中所有任务都执行完后才会执行到我们的函数，因此这个函数执行的时间也有细微的差别
+• 这个方法的语法是：window.setInterval(function(){},1000);
+• 第一个参数是要执行的函数，第二个参数是每过多长时间将函数放入执行队列，这里需要说明的是，第一个参数的那个函数，不能带有参数，
+  其次，里面的this默认指向window，setInterval很消耗内存，这个计时器一旦开始就不会终止，因此内核需要一直监听。
+• 这个时候就需要一个方法来消除定时器了：clearInterval，定时器其实会返回一个标记，可以通过这个标记来清除对应的定时器
+// var i = 0;
+// var timer = setInterval(function () {
+//     i++;
+//     if(i === 10) {
+//         clearInterval(timer);
+//     }
+// },100)
+• 实际上，如果打印这个timer的话，它就是数字1，可以再开一个定时器，返回的就是2，也就是说这个标记就是定时器的序号数，
+  直接clearInterval(1);其实也可以清除第一个定时器，不过这里用标记还是比较好
+• 特别强调：凡是写定时器的，必须清除!!!
+• 定时器是先等待在执行，有时候只需要这个函数延迟一段时间执行，并不需要专门开启一个定时器，这个时候就用到setTimeout了
+  setTimeout是延迟执行的意思，语法和setInterval一样，只是这个方法只把函数延迟一段时间之后执行一次而已
+  同时也有clearTimeout，当不想让这个函数执行了，提前把他clear掉就可以了
+• 其实steInterval和steTimeout第一个参数不一定非要填函数，它也可以是一串字符串
+// setInterval('console.log(1);',100);
+• 在外部定义好函数，然后可以直接把函数名传进去更简便
+// function text() {}
+// setInterval(text,1000);
+
+
+二十二、滚动条与元素尺寸
+1.查看滚动条的滚动距离
+• 第一套：window.pageXOffset/window.pageYOffset
+• 这个方法可以查看滚动条的横轴和纵轴的滚动距离，IE8以下不兼容
+• 第二套：document.body.csrollLeft/docunment.body.csrollTop
+  document.doncument.Element.csrollLeft / document.docunment.Element.csrollTop  这种方法只有IE兼容
+• 虽然IE可以使用这两个方法，但是这两个方式只有IE可以使用，
+• 说明：这两种方式要一起使用，因为浏览器的兼容性问题，有的浏览器document.body有值，有的是document.document.Element有值
+  但是所有的浏览器都只有一个值，不会两个都有或者一个都没有，而且这里没有值不代表是null，而是0 ，因此使用的时候要两个一起使用
+• 针对兼容性问题，封装一个函数，求滚动条距离的方法
+// function getScrollOffset () {
+//     if (window.pageXOffset) {
+//         return {
+//             x:window.pageXOffset,
+//             y:window.pageYOffset
+//         }
+//     }
+//     return {
+//         x:document.body.scrollTop + document.documentElemenet.scrollTop,
+//         y:document.body.scrollLeft + document.docunemntElemenet.scrollLeft;
+//     }
+// }
+• 当浏览器不是IE的时候，可以直接使用window.pageXOffset和window.pageYOffset的方法，当没有这两个的时候，才需要来计算
+
+2.查看窗口尺寸
+• 视口就是可视区，改变浏览器的大小的时候会改变可视区的大小，计算可视区大小依然有两套方法：
+• 第一套：window.innerHeight/window.innerWidth;
+  这个方法可以直接获取到当前可视区的宽高，IE8以下不兼容
+• 第二套：标准模式下，document.documentElement.clientWidth / document.documentElement.clientHeight,任何浏览器都兼容
+  怪异模式下（混杂模式）：document.body.clientWidth / document.body.clientHeight，才能查看视口大小，而不能使用标准模式下的方法
+
+• 浏览器的渲染模式有两种：标准模式和怪异模式，我们常用的就是标准模式，怪异模式是防止浏览器升级版本过高对后面版本的代码不兼容，
+  让浏览器可以向后兼容其他低版本的代码的法则，比如IE6的怪异模式下可以兼容IE5和IE4的语法
+• 把HTML第一行的<！DOCTYPE HTML> 去掉就可以变成怪异模式了，加上这一行就是标准模式了
+• document上有一个方法叫做compatMode,当浏览器处于怪异模式的时候只会返回字符串"BackCompat"
+  在标准模式下返回"CSS1Compat"通过这个方法就可以判断是怪异模式还是标准模式了
+• 知道了什么是标准模式和怪异模式以及如何判断的情况下，就可以封装一个兼容性的函数，返回浏览器的视口大小
+// function getViewportOffset () {
+//     if (window.innerWidth) {
+//         return {
+//             w:window.innerWidth,
+//             h:window.innerHeight
+//         }
+//     }
+//     if (document.compatMode == 'CSS1Compat') {
+//         return {
+//             w:document.documentElement.clientWidth,
+//             h:document.docuemntElement.clientHeight
+//         }
+//     }else {
+//         return {
+//             w:document.body.clientWidth,
+//             h:document.body.clientHeight
+//         }
+//     }
+// }
+
+3.查看元素的几何尺寸:domEle.getElementClientRect()
+• 在获取dom元素上，有一个getBoundingClientRect方法，这个方法可以获取到元素的宽高和左上点位置以及右下点位置（width,height,top,left,
+  right,bottom），注意这里的宽高是指除去了margin的盒子模型的宽高，但是老版本IE浏览器浏览器没有实现width和height，那么在老版本IE
+  计算宽高的时候就需要用bottom-top和right-left来计算宽高值了。还有一点需要注意的是，这里的宽高也不是实时更新的，数据只是一个副本
+  所以依然可以封装一个函数，可以返回元素的宽高
+// Element.getElemnetOffset () {
+//     var objData = this.getBoundingClientRect();
+//     if (objData.width) {
+//         return {
+//             w:objData.width,
+//             h:objData.height
+//         }
+//     }else{
+//         return {
+//             w:objData.right - objData.left,
+//             h:objData.bottom - objData.top
+//         }
+//     }
+// }
+
+4.滚动条滚动的方法有三个：scroll,scrollTo,scrollBy.
+• 这三个方法都有两个参数，分别是x值和y值，前两个方法的作用一摸一样，都是让滚动条滚到（x，y）的位置，但是最后一个scrollBy有一些区别
+  它是让滚动条相对于上一个位置滚动多少距离，可以简单的用这个方法来实现一个自动阅读功能
+// setInterval(function() {
+//   scrollBy(0,10);
+// },50);
+
+5.另一个查看元素尺寸的方法：dom.offsetWidth / dom.offsetHeight
+• 虽然前面有一个ele.getBondingClienRect()方法，但是由于这个方法名字太长了，用的并不是非常多，相比较而言，这两个dom元素的属性用的多一点
+  这里获取的宽高值和上面一样，都是除去margin后的盒子模型的宽高
+
+6.查看元素的位置：dom.offsetLeft / dom.offsetTop
+• 这两个值分别是元素距离左侧和上栅的距离，这里的值是相对于有定位的父级而言的，如果没有有定位的父级的话，才是相对于文档的坐标。
+  那么如果找到有定位的父级呢：domEle上面还有一个属性是offsetParent,这个属性可以查看到元素的有定位的父级，如果没有的话就会返回body，
+  而body的offsetParent则是null。可以利用上面的信息来封装一个函数，求元素的相对于文档的坐标
+// Element.prototype.getPosition = function () {
+//     if (!this.offsetParent) {
+//         return {
+//             "w":this.offsetLeft,
+//             "h":this.offsetTop
+//         }
+//     }
+//     var width = this.offsetLeft,
+//         height = this.offsetTop,
+//         ele = this.offsetParent;
+//         while (ele.offsetParent) {
+//             width += this.offsetParent.offsetLeft;
+//             height += this.offsetParent.offsetTop;
+//             ele = ele.offsetParent;
+//         } 
+//         return {
+//             "w":width,
+//             "h":height
+//         }
+// }
+
+
+二十三、脚本化CSS
+1.读写CSS样式：
+• 每个dome元素都有一个style，dom。style里面存放的这个元素的行间样式，可以通过这个属性来读写元素的行间样式。
+  注意：碰到float这样的关键字属性，前面加一个css前缀：cssFloat
+  复合属性必须拆解：border：1px solid red；---> border-width、border-color、border-style
+  当css样式是用‘ - ’ 链接的，要写成小驼峰式的写法：background-color  ----> bachgroundColor
+  这个属性只能读写行间样式，写在CSS的样式是不能获取的，因此通过这个属性加样式的时候要注意权重值的问题
+
+2.查询计算样式
+• window上面有一个方法叫做getComputedStyle可以来获取元素的计算样式，也就是CSS样式
+// window.getComputedStyle(ele.mull);
+• 这里的样式是取优先级最高的，不只是行间样式，所有的只要是表现出来的样式都可以获取出来，返回的计算样式的值是绝对值，没有相对值
+  我们写的background-color:red;会返回rgb(255,0,0),em单位或百分比单位都会化成具体的像素值返回
+// div::after{
+//   width:100px;
+//   height:100px;
+//   background-color:red;
+// } 
+// window.getComputedStyle(div,'after').width;
+• 这个方法有两个参数，第一个参数是要获取的元素，第二个参数是一个字符串，代表是否要获取这个元素上的某一个伪元素，如果不的话，就填null
+• IE8以下没有这个方法，IE8有一个特殊的样式currentStyle,dom.currentStyle也会返回一个样式表，和上面的基本一样，唯一的区别就是返回的值
+  不是经过转换的绝对值，而是写什么值就是什么值。
+• 现在有了这些方法和属性，就可以封装一个兼容性的获取样式的函数了
+// function getStyle(obj,prop,fake) {
+//     var fake = fake || null;
+//     if (obj.currentStyle) {
+//         return obj.currentStyle[prop];
+//     }else{
+//         return window.getComputedStyle(obj,fake)[prop];
+//     }
+// }
+
+3.脚本化样式表
+• 在docunment上有一个属性叫做styleSheets,这个属性储存了一个html文档所有的css样式表的集合，可以来直接操作style标签，实际用处不大。
+
+4.小方块运动函数：
+// var div = document.getElementById('dome');
+// var timer = window.setInterval(function () {
+//     div.style.left = parseInt(getStyle(div,'left')) + 1 + 'px';
+//     ifparseInt((getStyle(div,'left')) > 1000){
+//         clearInterval(timer);
+//     }
+// },10);
+
+
+二十四、事件的绑定与解除
+• 事件是交互体验的核心功能，非常非常重要，事件是每一个浏览器本来就有的，我们只是给相应的事件添加了一个回调函数，先看一个拖拽事件的例子：
+// div.addEventListener('mousedown',function (e) {
+//     var disX = e.clientX - parentInt(getStyle(this,'left')),
+//         disY = e.clientY - parentInt(getStyle(this,'top'));
+//     document.addEventListener('mousemove',mouseMove,false);
+//         div.addEventListener('mouseup',function (e) {
+//             document.removeEventListener('mousemove',mouseMove,false);
+//         },false);
+// },false);
+// function mouseMove (e) {
+//     div.style.left = e.clientX - disX + 'px';
+//     dov.style.top = e.clientY - disY + 'px';
+// }
+
+1.绑定事件
+• 句柄方式：
+// var div = document.getElementByTagName('div')[0];
+// div.onclick = function (e) {
+//     console.log('a');
+// }
+• 后面的函数就叫事件处理函数，也称为回调函数，当点击事件触发的时候，就会执行后面的处理函数，事件可以持续监听，并不是执行一次就失效，
+  因此这个事件监听部分不属于JS引擎，因为JS引擎是单线程的，事件监听属于内核的其他模块部分，一旦事件触发，事件监听就会把处理函数放入
+  执行队列，等待JS引擎来执行。虽然句柄方式的兼容性很好，但一个元素的一种事件只能绑定一个函数，基本等同于在行间写：
+// <div onclick="console.log('a')"></div>
+• 这两种写法是一样的，一些简单的函数可以用这种方法写
+
+2.ele.addEventListener(type,handle,false)方法
+// div.addEventListener('click',function(e){
+//     console('a');
+// },false);
+• 这里面有三个参数，第一个参数是事件类型，第二个参数是处理函数，第三个参数是是否捕获，处理函数可以直接在addEventListener方法里面写一个
+  匿名函数，也可以在外面写一个命名函数，然后方法里写函数引用。
+• 这种方法更加通用常见，而且一种事件可以绑定多个函数，但同一个处理函数只能绑定一次
+// function test1(){
+//     console.log('a');
+// }
+// function test2(){
+//     console.log('a');
+// }
+// div.addEventListener('click',test1,false);
+// div.addEventListener('click',test2,false);
+• 点击一次同时打印a b ，这是唯一一个有事件捕获的方法。注意：即使函数体相同，两个函数也不是一个函数ie9一下不兼容！！！
+
+3.ele.attachEvent('on' + type,handle)
+• 这个方法是IE独有的方法，一个事件同样可以绑定多个处理函数
+// div.attachEvent('onclick',function(){
+//     console('a');
+// });
+• 基本和addEventListener差不多，有一点区别的是，当同一个函数绑定多次的时候，addEventListener是只执行一次，但attachEvent绑定几次执行几次
+// function test(){
+//     console.log('a');
+// }
+// div.attachEvent('click',test);
+// div.attachEvent('click',test);
+• 现在是点击一次打印两个a
+• 有一个笔试常考的绑定事件的题：使用原生JS，addEventListener,为每一个li绑定一个点击事件，输出他们的顺序，这个题不单单是考绑定事件，
+  更多是闭包的运用
+// var $Li = document.getElementsByTagName('li');
+// for (var i = 0;len = $Li.length; i < len; i++) {
+//     (function (n) {
+//         $Li[n].addEventListener('click',function(){
+//             console.log(n);
+//         },false);
+//     }(i))
+// }
+
+4.事件处理函数的运行环境
+• 句柄绑定方式中，函数里面的this指向元素本身
+• addEventListener方式中，函数里面的this指向元素本身
+• attachEvent中，函数里面的this指向window而不是元素本身，这算是IE的一个BUG，针对这种情况我们就需要把函数提取出来，
+  然后在attachEvent的时候用call来改变函数内部的this指向
+// div.attachEvent('onclick',function(){
+//     this.call(div);
+// }，false);
+• 有了以上的知识，我们就可以封装一个兼容性的事件绑定函数了
+// function attachEvent(ele,type,handle) {
+//     if (ele.addEventListener) {
+//         ele.addEventListener(type,handle,null);
+//     }else if (ele.attcahEvent){
+//         ele.attachEvent('on' + type,functon () {
+//             handle.call(ele);
+//         });
+//     }else{
+//         ele['on' + type] = handle;
+//     }
+// }
+• 这样事件绑定就基本完成了，但是还可以优化一下，在第二个IE的方法中我们用了一个匿名函数，这个函数就无法接触绑定了，因此可以优化成命名函数
+// function attachEvent(ele,type,handle) {
+//     if (ele.addEventListener) {
+//         ele.addEventListener(type,handle,null);
+//     }else if (ele.attchEvent) {
+//         ele['temp' + type + handle] = handle;
+//         ele[type + handle] = function () {
+//             ele['temp' + type + handle].call(ele);
+//         };
+//         ele.attachEvent('on' + type,ele[type + handle]);
+//     }else{
+//         ele['on' + type] = handle;
+//     }
+// }
+• 这种写法应该是业内公认的事件绑定函数，这里专门处理了IE方法中的匿名函数问题，我们用元素自身的一个属性来保存了这个处理函数
+
+5.解除事件处理函数
+• 句柄方式：
+// ele.onclick = null;
+• 这样就很简单的就可以解除绑定事件的处理函数了
+• ele.removeEventListener(type,handle,false):针对addEventListener的解除绑定，注意：只有命名的才可以解除绑定
+//  div.addEventListener('click',function (){ console.log('a');},false);
+//  div.removeEventListener('click',function() { console.log('a');},false);
+• 这是没有办法解绑定的，因为是两个匿名函数
+// function test(){
+//     console.log('a');
+// }
+// div.addEventListener('click',test,false);
+// div.removeEventListener('click',test,false);
+• 必须改成这种方法才能解除绑定
+
+6.ele.detachEvent('on' + type,handle)
+• 针对IE的attachEvent的解除绑定，也是同一个函数才可以解除绑定，匿名函数无法解除绑定，封装兼容性的解除绑定函数：
+// function removeEvent(ele,type,handle){
+//     if (ele.removeEventListener) {
+//         ele.removeEventListener(type,handle,false);
+//     }else if (ele.detachEvent) {
+//         ele.detachEvent('on' + type,handle);
+//     }else{
+//         ele['on' + type] = null;
+//     }
+// }
+
+
+二十五、事件处理模型与事件委托
+1.事件处理模型---->事件冒泡、事件捕获
+• 什么是冒泡：在结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件子元素冒泡向父元素，结构上自底向上（视觉上自顶向下）
+  大部分事件都有事件冒泡现象，并且所有的浏览器都有事件冒泡，结构上冒泡和事件没有关系
+• 并不是所有的事件都有冒泡,focus,blur,change,submit,reset,select等方法就没有事件冒泡现象。
+• 事件捕获： 结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件自父元素捕获至子元素（事件源元素），结构上自顶向下
+  addEventListener最后一个参数就是是否开始事件捕获，当填true的时候，就代表开启了事件捕获，开启就不会冒泡了。
+  因为addEventListener只有chrome有，因此事件捕获只有Chrome浏览器有
+  当事件捕获和事件冒泡同时存在的时候，触发顺序为：先捕获在冒泡
+// var wrapper = document.getElementsByClassName(‘wrapper’)[0],
+//     box = document.getElementsByClassName(‘box’)[0],
+//     content = document.getElementsByClassName(‘content’)[0];
+// wrapper.onclick = function () {
+//     console.log(‘wrappeBubbler’);
+// }
+//  box.onclick = function () {
+//      console.log(‘boxBubble’);
+//   }
+//   content.onclick = function () {
+//       console.log(‘contentBubble’);
+//   }
+//   wrapper.addEventListener(‘click’, function (e) {
+//       console.log(‘wrapper’);
+//   }, true);
+//   box.addEventListener(‘click’, function (e) {
+//       console.log(‘box’);
+//   }, true);
+//   content.addEventListener(‘click’, function (e) {
+//       console.log(‘content’);
+//   }, true);
+• 结果是先冒泡在捕获，但是当把捕获写到冒泡前面的时候，顺序好像发生了变化：
+  wrapper-->box-->contentBubble-->content-->boxBubble-->warpperBubble
+  这里是因为点击content,并不属于冒泡，而是事件执行，我们先绑定的boxBubble，所有先捕获，在事件执行，在冒泡，
+
+2.取消冒泡和阻止默认事件
+• 有时候冒泡和默认事件会对我们的功能造成影响，因此需要适时的取消冒泡和默认事件，
+• 绑定事件的处理函数的时候，可以传递一个形参，代表事件对象，一般是e或者是event，系统会自动帮我们捕获事件源对象并且把事件源对象传入
+• 取消冒泡的方法：w3c标准方法：event.stopPropagation()
+// var wrapper = document.getElementsByClassName('wrapper')[0],
+//     box = document.getElementsByClassName('box')[0],
+//     content = document.getElementsByClassName('conent')[0];
+// content.onclick = function (e) {
+//     console.log('content');
+//     e.stopPropagation();
+// }
+• 现在点击content就没有冒泡了，但点击box还是会有，IE9以下不支持！！！
+• event.canceBubble = true :这个方法是属于IE的以下高版本浏览器也有，只要让这个属性的值等于true，就可以取消事件冒泡
+• 封装一个兼容性的取消事件冒泡方法：
+// function stopPropagation (event) {
+//     if (event.stopPropagation) {
+//         event.stopPropagation();
+//     }else{
+//         event.canceBubble = true;
+//     }
+// }
+• 默认事件：在浏览器点击右键，会弹出一个菜单，这就是默认事件contextmenu。还有a标签即使不写跳转的页面也会自动刷新页面，这就是一个默认事件
+• 阻止默认事件：return false  只需要在处理函数最后写上return false就可以阻止默认事件了
+// document.oncontextmenu = function () {
+//     console.log('a');
+//     return false;
+// }
+• 这样在页面右键就不会出菜单了，需要注意的是：这种写法只能用在句柄方式绑定事件上。
+• preventDefault()这是w3c标准的阻止默认事件的方法，句柄也可以使用,IE9以下不兼容！！！
+// document.addEventListener('contextmenu',function (e) {
+//     console.log('menu');
+//     e.preventDefault();
+// },false)
+• e.returnValue = false 这个是IE的方法，事件源对象returnValue代表是否有默认事件，直接返回false就可以阻止默认事件了，
+  高版本浏览器也有这个属性。
+// document.attachEvent('oncontextmenu',function (e) {
+//     e.returnValue = false;
+// });
+• 现在就可以封装一个兼容性的阻止默认事件的方法了：
+// function cancelHandler(event) {
+//     if (event.preventDefault) {
+//         event.preventDefault();
+//     }else{
+//         event.returnValue = false;
+//     }
+// }
+• 小例子：阻止a标签不跳转：
+// var a = document.links[0];
+// a.addEventListener('click',function (e) {
+//     e.cancelHandler(e);
+// },false)
+• 协议限定符来阻止默认事件：不仅仅是0，任意一个表示false的值，就可以取消掉默认事件。
+// <a href="javascript:void(0);">www.baidu.com</a>
+
+3.事件对象
+• 在IE中系统不会把事件对象传到方法中，因此我们的参数e或者event在IE中是不好用的，IE会把事件对象传递到window.event上，
+  所以当我们使用事件对象的时候，就要写兼容性的写法：
+// var event = e || window.event;
+• 这样就可以正常的获取到事件对象了。
+
+4.事件委托--->事件源对象
+• 现在有一个ul，下面有十万个li，当给父级的ul添加第一个点击事件之后，由于事件冒泡的存在，不论我们点击那个li都会调用父级的点击事件处理函数，
+  这个时候触发父级ul的点击函数的那个li就被称之为事件源对象
+  event.target是火狐的获取事件源对象
+  event.srcelement 是IE的获取事件源对象
+  chrome两种都有
+• 因此我们在获取事件源对象的时候也需要写兼容性的写法，配合刚才的事件对象的兼容性写法就是这个样子的：
+// oUl.addEventListener('click',function (e) {
+//     var event = e || window.event;
+//     var tar = event.target || event.srcElement;
+//         console.log(tar);
+// },false);
+• 我们利用事件源对象和事件冒泡来处理的方式就叫做事件委托
+// oUl.addEventListener('click',function (e) {
+//     var event = e || window.event;
+//     var tar = event.target || event.srcElement;
+//         console.log(tar.innerHTML);
+// },false);
+• 事件委托的优点：
+  性能  不需要循环所有的子元素一个个绑定事件
+  灵活  当有新的子元素被加入的时候不需要重新绑定事件
+
+
+
+二十六、鼠标事件与键盘事件
+1.鼠标事件：
+• 鼠标事件有很多：click（点击）、mousedown（鼠标按下）、mousemove（移动鼠标）、mouseup（松开鼠标）、
+  contextmenu（右键菜单）、mouseover（鼠标开关）、mouseout（鼠标移开）。
+  click是一个完整的点击事件包括mousedown和mouseup。点击顺序是mousedown、mouseup、click。
+• 所有的鼠标事件都有clientY和clientY，代表鼠标点击的位置，可以通过e.clientX和e.clientY来查看。
+// var firstTime,
+//     lastTime,
+//     flag = false;
+// document.onclick = function (e) {
+//     console.log('click');
+// }
+// document.onmousedown = function (e) {
+//     console.log('mousedown');
+// }
+// document.onmouseup = function (e) {
+//     console.log('mouseup');
+// }
+• 输出结果为 mousedown、mouseup、click。
+• 当同时绑定了mosedown和click事件后，如何解决冲突问题：
+// var firstTime,
+//     lastTime,
+//     flag = false;
+// document.onclick = function (e) {
+//     if (flag) {
+//         console.log('click');
+//     }else{
+//         console.log('mousedown');
+//     }
+// }
+// document.onmousedown = function (e) {
+//     firstTime = new Date().getTime();
+// }
+// document.onmouseup = function (e) {
+//     lastTime = new Date().getTime();
+//     if (lastTime - firstTime < 200) {
+//         flag = true;
+//     }else{
+//         flag = false;
+//     }
+// }
+• 如何判断鼠标点击的是左键还是右键？click事件永远都是左键，左键和右键的区别的是mousedown事件。在mousedown的事件对象中有一个属性叫做button，
+  这个属性的值是0的时候代表我们按下的是左键，1的时候代表按下的中键，2的时候代表按下的是右键。
+// document.onmousedown = function (e) {
+//     if (e.button == 0) {
+//         console.log('left');
+//     }else if (e.button == 1) {
+//         console.log('mid');
+//     }else{
+//         console.log('right');
+//     }
+// }
+• 现在就可以写一个鼠标拖拽的事件了：
+// var div = document.getElementsByTagName('div')[0];
+// function drag (elem) {
+//     var disx,
+//         disY;
+//     addEvent(elem,'mousedown',function (e) {
+//         var event = e || window.event;
+//         disX = event.clientX - parseInt(getStyle(elem,'left'));
+//         disY = event.clientY - parseInt(getStyle(elem,'top'));
+//         addEvent(document,'mousemove',mouseMove);
+//         addEvent(document,'mouseup',mouseUp);
+//         stopBubble(e);
+//         cancelHandler(e);
+//     });
+//     function mouseMove (e) {
+//         var event = e || window.event;
+//         elem.style.left = event.clientX - disX + 'px';
+//         elem.style.top = event.clientY - disY + 'px';
+//     }
+//     function mouseUp (e) {
+//         removeEvent(document,'mousemove',mouseMove);
+//         removeEvent(document,'mouseup',mouseUp);
+//     }
+// }
+• 这里我们为了不因为鼠标移动过快导致移出div，我们将mouseover事件绑定到了document上。
+• 针对鼠标帧频过快的问题，IE中有一个也可以说是另一种事件捕获的方法——domEle.setCapture()。
+  调用这个方法之后，页面后续的所有操作就会全部都归于这个domEle上，比如div有一个拖拽事件，不过mousemove绑定在div上，
+  只要调用了这个方法，当鼠标拖拽过程中鼠标移出了div，这个时候有效的鼠标移动就变成了document上的mousemove事件了，
+  但是它还是归于了div上，因此div还是可以跟着鼠标移动。同时还有一个domEle.releaseCapture()方法可以来释放这个捕获行为。
+
+2.键盘事件：
+• 键盘事件主要有三个：触发顺序分别是keydown、keypress、keyup。
+// document.onkeydown = function (e) {
+//     console.log('keydown');
+// }
+// document.onkeypress = function (e) {
+//     console.log('keypress');
+// }
+// document.onkeyup = function (e) {
+//     console.log('keyup');
+// }
+• 输出的结果是keydown、keypress、keyup。
+• keydown和keypress可以响应连续操作，我们一直按着键盘就会一直触发事件。
+  keypress的范围和keydown有所区别：
+  keydown可以响应任意键盘按键，keypress只能响应字符类按键，也就是有ASCII码的字符的按键，像字母数字回车空格之类的。
+  事件对象的属性方面：
+  只有keypress有charCode属性，这个属性代表的我们输入的这个字符的ASCII码，配合SHIFT之类的按键可以直接获取大写字母等。
+  keyCode和which每个方法都有，表示的是这个键的唯一标示，可以告诉浏览器我们按下的是键盘上的哪一个键，比如空格是32，32就代表空格。
+  不过我们一般都用which，keyCode用的较少。
+
+• String上有一个方法叫做fromCharCode，可以接受一个Unicode值（包含ASCII值），然后返回对应的字符串，
+  我们可以配合这个方法和charCode来直接获取输入的字符。
+// document.onkeypress = function (e) {
+//     console.log(String.fromCharCode(e.charCode));
+// }
+
+
+3.窗体操作类：（window上的事件）
+• load事件：这个事件window.onload和在body标签上写onload是一样的效果，作用是等页面中所有的东西都下载完成再执行里面的代码
+• scroll事件：这个方法是监听滚轮滚动的事件，我们可以用这个事件来写一个兼容版的fix定位。
+// function beFixed (ele) {
+//     var initPosX = ele.getPosition().w,
+//         initPosY = ele.getPosition().h;
+//     addEvent(window,'scroll',function (e) {
+//         ele.style.top = initPosY + getScrollOffset().h + 'px';
+//         ele.style.left = initPosX + getScrollOffset().w + 'px';
+   
+//     })
+// }
+
+
+
+二十七、异步加载JS
+1.先介绍一下JSON：我们传输数据就两种格式：xml和json。
+• xml是以html为模板，自定义标签名作为数据名来传递数据，书写起来很麻烦，现在多用json，很少使用xml。
+• json是传输数据的另一种格式，它是以对象为模板（本质上就是对象，但是用途有所区别，对象是本地使用，json是用来传输数据）。
+• 不过我们传输数据的时候并不能将一个json对象直接传过去，我们只能传过去json形式的字符串，这个时候我们就需要用到JSON上的两个方法了。
+// JSON.parse -- > string -- > json
+// JSON.stringify -- > json -- > string
+• 通过JSON这两个方法，我们就可以进行数据传输了：
+// var obj = {
+//     'name' : "scarlett",
+//     'age' : 18
+// };
+// var string = JSON.stringify(obj);
+// console.log(string);
+// var data = JSON.parse(string);
+// console.log(data);
+• 我们的页面有三个树：DOMTree、CSSTree、renderTree。（实际上多于三个），renderTree上有两个规则：repaint和reflow，重绘和重排。
+  repaint是元素自身的位置和宽高不变，只改变颜色的之类的属性而不会导致后面的元素位置的变化的时候，renderTree发生的动作。
+  reflow是元素自身的位置或者宽高改变了从而导致的整个页面的大范围移动的时候，renderTree发生的动作。
+  所以我们在DOM操作的时候，要尽量避免重排。
+
+2.JS异步加载
+• 我们前面知道script标签的特点是会阻塞后面的DOM解析，只有当script标签下载完成并且全部执行完之后，浏览器才会继续解析DOM。
+  这样就导致了js加载有这样的缺点：加载工具方法本身没有必要阻塞文档，js加载会影响整个页面效率，一旦网速不好，
+  那么整个网站将等待js加载而不进行后续渲染。
+  DOMTree就是解析DOM结构的，当我们在解析DOM的时候突然碰到一个script标签，那么这个script标签就会阻断DOMTree和CSSTree，
+  然而我们有一些js的工具库并不操作DOM，这个时候我们就需要让这些工具库进行异步加载或者按需加载了。
+  以前有一种写法是将script标签写在body的最后面，等在DOM全部解析完成之后才加载js。
+  现在有了html5标准之后，就有了另一套异步加载js的方法了。
+
+3.js异步加载的三种方案：
+• defer异步加载
+• 我们在script标签的行间写一个defer=“defer”或者直接写defer，就可以让这个script变成异步加载了。但是这种异步只是针对下载方面，
+  只有等DOMTree全部解析完成（不包括下载完里面的资源）后才会异步执行。而且这个方法只有IE和一些高版本的firefox和chrome可以用。
+//<script type="text/javascript" defer="defer">console.log('hello');</script>
+• 不过这一种方式可以在script标签里面写代码。
+  注意：IE6和IE7的异步加载最多只能有2个，当多余两个的时候必须等前两个加载完才会加载第三个。
+  所有defer的js代码都保证按照顺序执行。
+
+• async异步加载
+• async是asynchuronous的缩写，它是html5的新标准，下载完成后就会立即异步执行，除了IE6 - IE8 其他都好使。
+//<stript type="text/javascript" async="async"></stript>
+• 不过这种方式不能把代码写在script标签里面，只能引用。
+ （虽然标准是这么写的，但是现在随着内核升级，async里面也可以写代码了，在没有src的情况下）。
+  而且async的js代码不能保证是顺序执行的。这两个属性不能一起使用！
+
+• 兼容性写法：
+
+•直接写两个script标签，一个是defer，一个是async。
+但是这种方法有缺陷：IE高版本会加载两遍引起冲突，有些浏览器两个都没有会一个都加载不出来。
+所以我们就需要用第二种方法了。
+• 通过动态添加script标签。
+  "Script-inserted script elements now have async default to true, which can be set to false to make the scripts
+  execute in insertion order."(“脚本插入的脚本元素现在具有异步默认为true，可以设置为false以使脚本以插入顺序执行。”)
+  w3c的标准规定：动态添加的script标签是异步的。
+  通过这个特性，我们这里就可以封装一个兼容性的异步加载js的函数了。
+// function asyncLoaded (url,callback) {
+//     var script = document.createElement('script');
+//     script.type = 'text/javascript';
+//     if(script.readyState) {
+//         script.onreadystatechenge = function () {
+//             if (script.readyState = 'loaded' || script.readyState == 'complete') {
+//                 script.onreadystatechenge = null;
+//                 callback && callback();
+//             }
+//         }
+//     }else{
+//         script.onload = function (e) {
+//             callback && callback();
+//         }
+//     }
+//     script.src = url;
+//     document.body.appendChild(script);
+// }
+• 需要注意的是：readtState的if-else一定要写在script.src=url和appendChild之前，因为电脑速度可能会很快，
+  刚走到src=url部分就已经加载完毕了，readyState已经变成了loaded，后面就不会触发onreadystatechange事件了。
+  这里src部分的下载是异步的，不会阻塞后面的代码的执行，也就是说可以一边把script插入到DOM中一边下载资源。
+  还有一点，如果我们的回调函数是写在需要加载进来的文件里面的方法的话，我们就需要把这个方法放到匿名函数里面，
+  这样在语法解析的时候才不会因为函数未声明而报错。
+• 异步加载js不允许使用document.write这个方法。它会清除文档流，一旦执行就会把全部的标签都清除掉，包括自身的script标签。
+
+4.JS加载时间线（performace timing line)
+• 创建Document对象，开始解析web页面。解析HTML元素和他们的文本内容后添加Element对象和Text节点到文档中。
+  这个阶段document.readyState = ‘loading’。
+• 遇到link外部css，创建线程加载，并继续解析文档。
+• 遇到script外部js，并且没有设置async、defer，浏览器加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。
+• 遇到script外部js，并且设置有async、defer，浏览器创建线程加载，并继续解析文档。 对于async属性的脚本，脚本加载完成后立即执行。
+ （异步禁止使用document.write()）
+• 遇到img等，先正常解析dom结构，然后浏览器异步加载src，并继续解析文档。
+• 当文档解析完成，document.readyState = ‘interactive’。
+• 文档解析完成后，所有设置有defer的脚本会按照顺序执行。（注意与async的不同,
+但同样禁止使用document.write()）;
+• document对象触发DOMContentLoaded事件，这也标志着程序执行从同步脚本执行阶段，
+转化为事件驱动阶段。
+• 当所有async的脚本加载完成并执行后、img等加载完成后，document.readyState = ‘complete’，window
+对象触发load事件。
+• 从此，以异步响应方式处理用户输入、网络事件等。
