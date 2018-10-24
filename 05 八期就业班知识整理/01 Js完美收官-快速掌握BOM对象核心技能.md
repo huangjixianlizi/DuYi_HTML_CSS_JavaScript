@@ -46,5 +46,10 @@ BOM...（很尴尬）
 
 ##详解Navigator
 
+##详解History
+
+##详解Location
+
+##详解Screen
 
 
