@@ -44,5 +44,7 @@ BOM...（很尴尬）
 
 ##详解Window
 
+##详解Navigator
+
 
 
