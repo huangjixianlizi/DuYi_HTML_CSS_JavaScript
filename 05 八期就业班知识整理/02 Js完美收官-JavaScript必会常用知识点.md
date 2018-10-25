@@ -58,9 +58,98 @@
 
 ![](https://i.imgur.com/JqNZTmu.png)
 
-##渲染模式的历史意义
+####渲染模式的历史意义
 
 ![](https://i.imgur.com/s3GcIhH.png)
+
+##Label标签
+
+####百度示例：
+
+![](https://i.imgur.com/P0G4iOL.png)
+
+输入框左边的文字都是在label标签里，当我们点击文字式，也可以选定相对的右边的输入框
+
+####作用：
+
+起到绑定的作用，事件一体化。
+
+####示例：
+
+html：
+
+		<p>
+			<label for="demo">username:</label>
+			<input type="text" id="demo">
+		</p>
+
+js：
+
+		var oLabel = document.getElementsByTagName('label')[0];
+		var oInput = document.getElementById('demo');
+	
+		oLabel.onclick = function () {
+			console.log(this);
+		}
+		oInput.onclick = function () {
+			console.log(this);
+		}
+
+##属性和特性
+
+属性包含特性。
+
+天生就有的叫特性，特性+后天加上的合起来叫属性。
+	
+	html：
+	
+		<input type="text" value="aaa" id="demo" data="input" cst = "du">
+	 
+	js：
+	
+		var oInput = document.getElementById('demo');
+		console.log(oInput.type)；//可取可操作
+		console.log(oInput.cst)；//不可取不可操作
+
+####区别：
+
+属于特性的属性 ，我们通过DOM对象操作，与html中的input是一一**映射**的关系，即通过DOM可以取到特性值并进行更改。
+
+[能映射的叫特性，其余的是非特性属性]
+
+后天的属性不可以！
+
+####操作后天的属性（非特性的属性）:
+
+我们可以通过setAttribute 和 getAttribute对行间样式的非特性属性进行操作。
+
+添加：
+
+	oInput.setAttribute('log','asdads');
+
+获取：
+
+	oInput.getAttribute('log');
+
+####ps:
+
+etAttribute、getAttribute和jQurey中的 attr 相对应。【对特性操作是和 prop对应】
+
+
+##懒加载和预加载
+
+懒加载： 例如淘宝，页面比较大，加载比较慢，所以我们优先加载第一显示窗口内容，至于下面的其他网页内容，当我们拖动滚动条能看到的时候再依次加载出来。
+
+预加载： 例如当我们查看一个比较大的图片时，由于网速限制图片会从顶到下一点一点加载出来，用户体验不好，我们可以先用灰色代替显示，当我们图片下载完成后再一次性的放到页面上。
+
+
+
+
+
+
+
+
+
 
 
 
