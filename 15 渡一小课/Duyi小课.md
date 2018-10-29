@@ -5,6 +5,9 @@
 
 ---
 ---
+
+#CSS
+
 [Css3之阴影](http://c7.gg/aLHwf)
 
 [Css3之背景属性之background-size](http://c7.gg/aLHwS)
@@ -15,11 +18,14 @@
 
 [Css3之弹性盒模型初探（一）](https://my.oschina.net/u/3953786/blog/2250630)
 
+[弹性盒子侧轴对齐方式](http://www.cnblogs.com/pandawind/p/9871146.html)
+
 [Css3新增背景属性](https://my.oschina.net/u/3953786/blog/2247046)
 
-[数据类型强制转换](https://my.oschina.net/u/3953786/blog/2245970)
 
-[JavaScript this指向相关内容](https://my.oschina.net/u/3953786/blog/2245959)
+[div居中方式](https://www.cnblogs.com/pandawind/p/9844347.html)
+
+#数组
 
 [js数组详解](https://my.oschina.net/u/3953786/blog/2245833)
 
@@ -39,7 +45,18 @@
 
 [转换字符串方法、判断数组类型](https://my.oschina.net/u/3953786/blog/2251377)
 
+
+#JavaScript
+
+[数据类型强制转换](https://my.oschina.net/u/3953786/blog/2245970)
+
 [不一般的块级作用域](https://my.oschina.net/u/3953786/blog/2247029)
 
-[div居中方式](https://www.cnblogs.com/pandawind/p/9844347.html)
+[JavaScript this指向相关内容](https://my.oschina.net/u/3953786/blog/2245959)
 
+#JQuery
+
+
+[初识jquery](https://www.cnblogs.com/pandawind/p/9856203.html)
+
+[jquery对象与核心函数](https://www.cnblogs.com/pandawind/p/9856303.html)
