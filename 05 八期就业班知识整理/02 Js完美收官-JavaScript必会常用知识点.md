@@ -143,8 +143,76 @@ etAttribute、getAttribute和jQurey中的 attr 相对应。【对特性操作是
 预加载： 例如当我们查看一个比较大的图片时，由于网速限制图片会从顶到下一点一点加载出来，用户体验不好，我们可以先用灰色代替显示，当我们图片下载完成后再一次性的放到页面上。
 
 
+##Math.random()应用
+
+取值范围：  [0,1)
+
+##文档碎片 虚拟DOM
+
+####文档碎片：【实际效果并不理想】
+
+可以理解为一个存储空间，节省操作和系统资源
+		
+		var oF = document.createDocumentFragment();
+		var oUl = document.getElementById('wrapper');
+		for(var i = 0;i < 10;i ++){
+			var newLi = document.creatElement('li');
+			newLi.innerText = i + '';
+			oF.appendChild(newLi);
+		}
+		oUl.appendChild(oF);
+
+推荐使用字符串拼接：
+
+		var htmlStr = '';
+		var oUl = document.getElementById('wrapper');
+		for(var i = 0;i < 10;i ++){
+			htmlStr += '<li>' + i + '<li>';
+		}
+		oUl.innerHTML = htmlStr;
+
+####虚拟DOM 【进阶课程】
 
 
+##封装byClassName【综合练习】 （目前已经被各大浏览器兼容）
+
+	Element.prototype.getElementsByClassName = Document.prototype.getElementsByClassName = document.getElementsByClassName || function (_className) {
+		var allDomArray = docunment.getElementsByTagName('*');
+		var lastDomArray = [];
+		var allDomlen = allDomArray.length;
+		function trimSpace(strClass){
+			var reg = /\s+/g;
+			var newStrClass = strClass.replace(reg,' ');
+			return newStrClass;
+		}
+		for(var i = 0; i < allDomlen; i++){
+			var lastStrClass = trimSpace(allDomArray[i].className).trim();// trim()自己封装的去首位空格
+			var classArray = lastStrClass.split(' ');
+			var classArraylen = classArray.length;
+			for(var j = 0; j < classArraylen;j++){
+				if(classArray[i] == _className){
+					lastDomArray.push(allDomArray[i]);
+					break;
+				}
+			}
+		}
+		return lastDomArray;
+	}
+
+
+##断点调试
+
+
+- **代码debugger**
+
+- **控制台直接加断点**
+
+- **console.log()**
+
+- alert()   //不常用
+
+
+ 
 
 
 
