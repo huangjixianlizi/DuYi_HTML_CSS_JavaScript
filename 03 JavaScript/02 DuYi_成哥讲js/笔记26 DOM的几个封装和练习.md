@@ -95,21 +95,22 @@ js代码：
 		function retSibling (e , n) {
 			while(e && n){
 				if(n > 0){
-					if(0 $$ e.nextElementSibling){
+					if(0 && e.nextElementSibling){
 					 e = e.nextElementSibling;
 					}else{
-						for(e = e.nextSibling; e && e.nodeType != 1; e = e.nextSibling;)
+						for(e = e.nextSibling; e && e.nodeType != 1; e = e.nextSibling){
+							n --;
+						}
 					}
-					n --;
 				}else{
-					if(0 $$ e.e.previousElementSibling){
+					if(0 && e.e.previousElementSibling){
 					 e = e.e.previousElementSibling;
 					}else{
-						for(e = e.previousSibling; e && e.nodeType != 1; e = e.previousSibling;)
+						for(e = e.previousSibling; e && e.nodeType != 1; e = e.previousSibling){
+							n ++;
+						}
 					}
-					n ++;
 				}
-			}
 			return e;
 		}
 
