@@ -325,3 +325,333 @@
             }
         }, 30)
     }
+
+
+#一个简单的小球弹性运动
+	
+	 	<div style="width: 100px; height: 100px; position: absolute;left: 0px;top: 0px;background-color: red;border-radius: 50%;"></div>
+	 	<span style="width: 1px; height: 100px;background-color: #ccc;position: absolute;left: 350px;top:0px;"></span>
+		<script type="text/javascript">
+	
+			var oDiv = document.getElementsByTagName('div')[0];
+			oDiv.onclick = function () {
+				startMove(this);
+			}
+			function startMove (obj) {
+				clearInterval(obj.timer);
+				var iSpeed = 40,
+					a = 0,
+					u = 0.8,
+					timer = null;
+				obj.timer = setInterval(function () {
+					a = (300 - obj.offsetLeft) / 8;
+					iSpeed = iSpeed + a ;
+					iSpeed = iSpeed * u;
+					if(Math.abs(iSpeed) < 1 && Math.abs(300 - obj.offsetLeft) < 1) {
+						console.log('over');
+						clearInterval(obj.timer);
+					}else{
+						obj.style.left = obj.offsetLeft + iSpeed +'px';					
+					}
+				},30)
+			}
+		</script>
+
+#一个简单酷炫的背景弹性运动的导航栏
+
+		<style type="text/css">
+			ul{
+				position: relative;
+				width: 600px;
+				height: 80px;
+				margin: 100px auto 0;
+					list-style: none;
+			}
+			ul .nav {
+				width: 148px;
+				height: 78px;
+				border: 1px solid #000;
+				color: #f00;
+				line-height: 78px;
+				text-align: center;
+				float: left;
+			}
+	
+			ul .bg{
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 150px;
+				height: 80px;
+				background-color: #f40;
+				opacity: 0.5;
+				}
+		</style>
+
+#
+
+	 	<ul>
+	 		<li class="nav">ES6</li>
+	 		<li class="nav">Webpack</li>
+	 		<li class="nav">Vue</li>
+	 		<li class="nav">Node</li>
+	 		<li class = 'bg'></li>
+	 	</ul>
+		<script type="text/javascript">
+	
+			var oLiArray = Array.prototype.slice.call(document.getElementsByClassName('nav'),0);
+			var oBg = document.getElementsByClassName('bg')[0];
+	
+			oLiArray.forEach(function (ele , index) {
+				ele.onmouseenter = function () {
+					var newLeft = this.offsetLeft;
+					startMove(oBg , newLeft);
+				}
+			});
+			function startMove (obj , target) {
+				clearInterval(obj.timer);
+				var iSpeed = 40,
+					a = 0,
+					u = 0.8,
+					timer = null;
+				obj.timer = setInterval(function () {
+					a = (target - obj.offsetLeft) / 8;
+					iSpeed = iSpeed + a ;
+					iSpeed = iSpeed * u;
+					if(Math.abs(iSpeed) <= 1 && Math.abs(target - obj.offsetLeft) <= 1) {
+						console.log('over');
+						clearInterval(obj.timer);
+						obj.style.left = target + 'px';
+					}else{
+						obj.style.left = obj.offsetLeft + iSpeed +'px';					
+					}
+				},30)
+			}
+		</script>
+
+
+#一个简单的页面碰撞运动
+	
+		<style type="text/css">
+			div {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100px;
+				height: 100px;
+				background-color: #f40;
+			}
+		</style>
+
+#
+
+	 	<div></div>
+		<script type="text/javascript">
+			var oDiv = document.getElementsByTagName('div')[0];
+			oDiv.onclick = function () {
+				startMove(this);
+			}
+	
+			function startMove(obj){
+				clearInterval(obj.timer);
+				var timer = null,
+					iSpeedX = 6,
+					iSpeedY = 8;
+				obj.timer = setInterval(function () {
+					var newLeft = obj.offsetLeft + iSpeedX;
+					var newTop = obj.offsetTop + iSpeedY;
+					if(newTop >= document.documentElement.clientHeight - obj.offsetHeight ){
+						iSpeedY *= -1; 
+						newTop = document.documentElement.clientHeight - obj.offsetHeight ;
+					}
+					if(newTop <= 0){
+						iSpeedY *= -1; 
+						newTop = 0;
+					}
+					if(newLeft >= document.documentElement.clientWidth - obj.offsetWidth){
+						iSpeedX *= -1; 
+						newLeft = document.documentElement.clientWidth - obj.offsetWidth ;
+					}
+					if(newLeft <= 0){
+						iSpeedX *= -1; 
+						newLeft = 0;
+					}
+					obj.style.left = newLeft + 'px';
+					obj.style.top = newTop + 'px';
+				},30)
+			}
+	
+		</script>
+
+
+#一个简单的模拟重力场的运动
+	
+		<style type="text/css">
+			div {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100px;
+				height: 100px;
+				background-color: #f40;
+			}
+		</style>
+
+#
+
+	 	<div></div>
+		<script type="text/javascript">
+			var oDiv = document.getElementsByTagName('div')[0];
+			oDiv.onclick = function () {
+				startMove(this);
+			}
+	
+			function startMove(obj){
+				clearInterval(obj.timer);
+				var timer = null,
+					iSpeedX = 6,
+					iSpeedY = 8,
+					g = 6;
+				obj.timer = setInterval(function () {
+					iSpeedY += g;
+					var newLeft = obj.offsetLeft + iSpeedX;
+					var newTop = obj.offsetTop + iSpeedY;
+					if(newTop >= document.documentElement.clientHeight - obj.offsetHeight ){
+						iSpeedY *= -1; 
+						iSpeedY *= 0.8;
+						iSpeedX *= 0.8;
+						newTop = document.documentElement.clientHeight - obj.offsetHeight ;
+					}
+					if(newTop <= 0){
+						iSpeedY *= -1; 
+						iSpeedY *= 0.8;
+						iSpeedX *= 0.8;
+						newTop = 0;
+					}
+					if(newLeft >= document.documentElement.clientWidth - obj.offsetWidth){
+						iSpeedX *= -1; 
+						iSpeedY *= 0.8;
+						iSpeedX *= 0.8;
+						newLeft = document.documentElement.clientWidth - obj.offsetWidth ;
+					}
+					if(newLeft <= 0){
+						iSpeedX *= -1; 
+						iSpeedY *= 0.8;
+						iSpeedX *= 0.8;
+						newLeft = 0;
+					}
+					if(Math.abs(iSpeedX) < 1){
+						iSpeedX = 0;
+					}
+					if(Math.abs(iSpeedY) < 1){
+						iSpeedY = 0;
+					}
+					if(iSpeedX == 0 && iSpeedY == 0 && newTop == document.documentElement.clientHeight - obj.offsetHeight){
+						clearInterval(obj.timer);
+						console.log('over');
+					}
+					obj.style.left = newLeft + 'px';
+					obj.style.top = newTop + 'px';
+				},30)
+			}
+	
+		</script>
+
+#无限次拖拽方块并丢出的运动
+
+		<style type="text/css">
+			div {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100px;
+				height: 100px;
+				background-color: #f40;
+			}
+		</style>
+
+#
+
+		<div></div>
+		<script type="text/javascript">
+			var oDiv = document.getElementsByTagName('div')[0],
+				 lastX = oDiv.offsetLeft,
+				 lastY = oDiv.offsetTop;
+	
+			oDiv.onmousedown = function (e) {
+				clearInterval(this.timer); //空中抓取出错预防
+				var event = e || window.event,
+					disX = e.clientX - this.offsetLeft,
+					disY = e.clientY - this.offsetTop,
+					that = this,
+					iSpeedX = 0,
+					iSpeedY = 0;
+				document.onmousemove = function(e) {
+					var newLeft = e.clientX - disX,
+						newTop = e.clientY - disY;
+					iSpeedX = newLeft - lastX;
+					iSpeedY = newTop - lastY;
+					//更新坐标
+					lastX = newLeft;
+					lastY = newTop;  
+					//拖拽运动
+					that.style.left = newLeft + 'px';
+					that.style.top = newTop + 'px';
+				}
+				document.onmouseup = function(e) {
+					document.onmousemove = null;
+					document.onmouseup = null;
+					startMove(that);
+				}
+			}
+	
+			function startMove(obj){
+				clearInterval(obj.timer);
+				var timer = null,
+					iSpeedX = 8,
+					iSpeedY = 8,
+					g = 6;
+				obj.timer = setInterval(function () {
+					iSpeedY += g;
+					var newLeft = obj.offsetLeft + iSpeedX;
+					var newTop = obj.offsetTop + iSpeedY;
+					if(newTop >= document.documentElement.clientHeight - obj.offsetHeight ){
+						iSpeedY *= -1; 
+						iSpeedY *= 0.8;
+						iSpeedX *= 0.8;
+						newTop = document.documentElement.clientHeight - obj.offsetHeight ;
+					}
+					if(newTop <= 0){
+						iSpeedY *= -1; 
+						iSpeedY *= 0.8;
+						iSpeedX *= 0.8;
+						newTop = 0;
+					}
+					if(newLeft >= document.documentElement.clientWidth - obj.offsetWidth){
+						iSpeedX *= -1; 
+						iSpeedY *= 0.8;
+						iSpeedX *= 0.8;
+						newLeft = document.documentElement.clientWidth - obj.offsetWidth ;
+					}
+					if(newLeft <= 0){
+						iSpeedX *= -1; 
+						iSpeedY *= 0.8;
+						iSpeedX *= 0.8;
+						newLeft = 0;
+					}
+					if(Math.abs(iSpeedX) < 1){
+						iSpeedX = 0;
+					}
+					if(Math.abs(iSpeedY) < 1){
+						iSpeedY = 0;
+					}
+					if(iSpeedX == 0 && iSpeedY == 0 && newTop == document.documentElement.clientHeight - obj.offsetHeight){
+						clearInterval(obj.timer);
+						console.log('over');
+					}
+					obj.style.left = newLeft + 'px';
+					obj.style.top = newTop + 'px';
+				},30)
+			}
+	
+		</script>
