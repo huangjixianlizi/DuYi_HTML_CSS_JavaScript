@@ -22,8 +22,9 @@
 
 [Css3新增背景属性](https://my.oschina.net/u/3953786/blog/2247046)
 
-
 [div居中方式](https://www.cnblogs.com/pandawind/p/9844347.html)
+
+[web前端css实现六边形效果](https://www.cnblogs.com/pandawind/p/9877765.html)
 
 #数组
 
@@ -54,9 +55,17 @@
 
 [JavaScript this指向相关内容](https://my.oschina.net/u/3953786/blog/2245959)
 
+[栈和队列](https://www.cnblogs.com/pandawind/p/9883775.html)
+
+[内置对象和包装类型](https://www.cnblogs.com/pandawind/p/9883787.html)
+
 #JQuery
 
 
 [初识jquery](https://www.cnblogs.com/pandawind/p/9856203.html)
 
 [jquery对象与核心函数](https://www.cnblogs.com/pandawind/p/9856303.html)
+
+[jquery选择器](https://www.cnblogs.com/pandawind/p/9877713.html)
+
+[基本筛选器](https://www.cnblogs.com/pandawind/p/9889270.html)
