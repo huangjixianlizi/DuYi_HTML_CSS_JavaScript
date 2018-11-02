@@ -1,4 +1,17 @@
-//多物体多值链式运动框架 ！！！！！！！
+// ==================================================================
+// 自己封装一个myForEach函数【与系统中的forEach完全相同】
+// ==================================================================
+// Array.prototype.myForEach = function (func) {
+//     var len = this.length;
+//     // 实际参数列表
+//     var _this = arguments[1] != undefined ? arguments[1] : window ;
+//     for (var i = 0; i < len; i++) {
+//         func.apply(_this, [this[i], i, this]);
+//     }   
+// }
+// ==================================================================
+// 多物体多值链式运动框架 ！！！！！！！
+// ==================================================================
 // var targetObj = {
 //     width: 400,
 //     height: 400,
@@ -6,7 +19,6 @@
 //     left: 300,
 //     top: 200
 // }
-
 // oDivArray[0].onclick = function() {
 //     startMove(this, targetObj, function (){
 //     	startMove(oDivArray[1], targetObj);
@@ -42,7 +54,9 @@ function startMove(obj, data, callback) {
         }
     }, 30)
 }
-//版本二
+// ==================================================================
+// 多物体多值链式运动框架版本二
+// ==================================================================
 // function startMove(obj, data, func) {
 //     clearInterval(obj.timer);
 //     var timer = null;
@@ -77,9 +91,9 @@ function startMove(obj, data, callback) {
 //         }
 //     }, 30)
 // }
-
-
-//数组 ： 封装一个myReduce方法
+// ==================================================================
+// 数组 ： 封装一个myReduce方法
+// ==================================================================
 Array.prototype.myReduce = function(func, init) {
     var len = this.length,
         prev = init,
@@ -93,9 +107,9 @@ Array.prototype.myReduce = function(func, init) {
     }
     return prev;
 }
-
-
-//数组 ： 封装一个myFilter方法
+// ==================================================================
+// 数组 ： 封装一个myFilter方法
+// ==================================================================
 Array.prototype.myFilter = function(func) {
     var newArr = [];
     for (var i = 0; i < this.length; i++) {
@@ -105,10 +119,9 @@ Array.prototype.myFilter = function(func) {
     }
     return newArr;
 }
-
-
 // ==================================================================
-// //拖拽函数
+// 拖拽函数
+// ==================================================================
 // function drag(elem) {
 // 		var disX,
 // 			disY;
@@ -132,8 +145,8 @@ Array.prototype.myFilter = function(func) {
 // 		}
 // 	}
 // ==================================================================
-
 // 封装阻止默认事件发生的函数
+// ==================================================================
 function cancelHandler(event) {
     if (event.preventDefault) {
         event.preventDefault();
@@ -141,9 +154,9 @@ function cancelHandler(event) {
         event.returnValue = false;
     }
 }
-
-
+// ==================================================================
 // 封装取消事件冒泡的函数
+// ==================================================================
 function stopBubble(event) {
     if (event.stopPropagation) {
         event.stopPropagation();
@@ -151,10 +164,10 @@ function stopBubble(event) {
         event.vanvelBubble = true;
     }
 }
-
-
+// ==================================================================
 // 封装兼容性的 addEvent(elem, type, handle);方法
-// 给一个dom对象添加该事件类型的处理函数（绑定事件）
+// ==================================================================
+// ps:给一个dom对象添加该事件类型的处理函数（绑定事件）
 function addEvent(elem, type, handle) {
     if (elem.addEventListener) {
         elem.addEventListener(type, handle, false);
@@ -166,9 +179,9 @@ function addEvent(elem, type, handle) {
         elem['on' + type] = handle;
     }
 }
-
-
+// ==================================================================
 // 封装函数，返回元素e的第n层祖先元素节点
+// ==================================================================
 function retParent(e, n) {
     while (e && n) { //e要有意义，容错
         e = elem.parentElement;
@@ -176,9 +189,9 @@ function retParent(e, n) {
     }
     return e;
 }
-
-
+// ==================================================================
 // 编辑函数，封装myChildren功能，解决以前部分浏览器的兼容性问题
+// ==================================================================
 // 【不用Children实现Children功能】
 // 【如何区分元素节点和节点？(elem.nodetype == 1)】
 Element.prototype.myChildren = function() {
@@ -192,9 +205,9 @@ Element.prototype.myChildren = function() {
     }
     return arr;
 }
-
-
+// ==================================================================
 // 自己封装hasChildren()方法，不可用children属性
+// ==================================================================
 Element.prototype.hasChildren = function() {
     var child = this.childNodes,
         len = child.length;
@@ -205,9 +218,9 @@ Element.prototype.hasChildren = function() {
     }
     return false;
 }
-
-
+// ==================================================================
 // 封装函数，返回元素e的第n个兄弟节点，n为正，返回后面的兄弟节点，n为负，返回前面的，n为0，返回自己。
+// ==================================================================
 function retSibling(e, n) {
     while (e && n) {
         if (n > 0) {
@@ -230,9 +243,9 @@ function retSibling(e, n) {
     }
     return e;
 }
-
-
+// ==================================================================
 // 封装一个insertAfter，仿照insertBefore
+// ==================================================================
 Element.prototype.insertAfter = function(targetNode, afterNode) {
     var beforeNode = afterNode.nextElementSibling;
     if (beforeNode == null) {
@@ -241,9 +254,9 @@ Element.prototype.insertAfter = function(targetNode, afterNode) {
         this.insertBefore(targetNode, beforeNode);
     }
 }
-
-
+// ==================================================================
 // 封装getScrollOffset()函数实时返回滚动条x轴和y轴距离
+// ==================================================================
 function getScrollOffset() {
     if (window.pageXOffset) {
         return {
@@ -257,9 +270,9 @@ function getScrollOffset() {
         }
     }
 }
-
-
+// ==================================================================
 // 封装兼容性方法getStyle(elem,prop)，用于查询某一对象的某种样式值
+// ==================================================================
 function getStyle(elem, prop) {
     if (window.getComputedStyle) {
         return window.getComputedStyle(elem, null)[prop];
@@ -268,8 +281,8 @@ function getStyle(elem, prop) {
     }
 }
 // ==================================================================
-// #通过使用自己封装的getStyle()以及getComputedStyle()实现元素的移动
-
+// 通过使用自己封装的getStyle()以及getComputedStyle()实现元素的移动
+// ==================================================================
 // 	<div style="width: 100px;height: 100px;background-color: red;position: absolute;left: 0;top: 0;"></div>
 // 	<script type="text/javascript">
 // 		function getStyle(elem, prop){
@@ -288,9 +301,8 @@ function getStyle(elem, prop) {
 // 		},100);	
 // 	</script>
 // ==================================================================
-
-
-//封装一个工具类type();
+// 封装一个工具类type();
+// ==================================================================
 function type(target) {
     var ret = typeof(target);
     var template = {
@@ -310,8 +322,9 @@ function type(target) {
         return ret;
     }
 }
-
-//在原型链上写一个数组去重方法
+// ==================================================================
+// 在原型链上写一个数组去重方法
+// ==================================================================
 Array.prototype.unique = function() {
     var temp = {},
         arr = [],
@@ -324,9 +337,9 @@ Array.prototype.unique = function() {
     }
     return arr;
 }
-
-
+// ==================================================================
 // 深层克隆
+// ==================================================================
 //利用json：	var obj1 = JSON.parse(JSON.stringify(obj));
 //封装：
 // （所有属性及属性值全相同且互不影响【无论是否为引用值】）
@@ -355,10 +368,10 @@ function deepClone(origin, target) {
     }
     return target;
 }
-
-
+// ==================================================================
 // 浅层克隆
-// （引用值的拷贝会互相影响
+// ==================================================================
+// （引用值的拷贝会互相影响）
 function clone(origin, target) {
     var target = target || {};
     for (var prop in origin) {
@@ -366,13 +379,14 @@ function clone(origin, target) {
     }
     return target;
 }
-
-// 圣杯模式 ===========================================【最完美的继承模式】
-//样例：
+// ==================================================================
+// 圣杯模式【最完美的继承模式】
+// ==================================================================
+// 样例：
 // Father.prototype.lastName = 'Deng';
 // function Father() {}
 // function Son() {}     
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// 
 function inherit(Target, Origin) { //封装一个继承函数（方法）方便每次调用
     function F() {} //定义一个F()方法充当中间层，这样之后再想改Son的原型就不会影响Father的原型
     F.prototype = Origin.prototype;
@@ -382,15 +396,14 @@ function inherit(Target, Origin) { //封装一个继承函数（方法）方便�
     Target.prototype.uber = Origin.prototype; //如果有一天想知道自己的超父级是谁，查看这条属性[即继承结构是：Target -->F() --> Father]
 
 }
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// 
 // inherit(Son, Father);				//调用函数，使Son继承Father的原型，并且后续更改Son原型不影响Father原型
 // var son = new Son();                //查看
 // var father = new Father();
 // console.log(son.lastName);
 // console.log(father.lastName);
-
-
-// **ps:yahoo的写法：**
+//
+// =============ps:yahoo的写法：================
 // var inherit = (function() {  
 // 	var F = function() {};
 // 	return function (Target, Origin){         
@@ -400,4 +413,5 @@ function inherit(Target, Origin) { //封装一个继承函数（方法）方便�
 // 		Target.prototype.uber = Origin.prototype;  
 // 	} 
 // }());
+// ============================================
 // ==================================================================
