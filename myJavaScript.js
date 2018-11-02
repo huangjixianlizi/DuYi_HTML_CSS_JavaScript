@@ -1,3 +1,53 @@
+
+// ==================================================================
+// 自己封装一个myReduce函数
+// ==================================================================
+Array.prototype.myReduce = function (func, initialValue) {
+    var len = this.length, _this = arguments[2] || window, nextValue = initialValue;
+    for (var i = 0; i < len; i++) {
+        nextValue = func.apply(_this, [nextValue, this[i], i, this]);
+    }
+    return nextValue;
+}
+// ==================================================================
+// 自己封装一个myMap函数
+// ==================================================================
+// Array.prototype.myMap = function (func) {
+//     var arr = [];
+//     var len = this.length;
+//     var _this = arguments[1] || window;
+//     for (var i = 0; i < len; i++) {
+//         arr.push(func.call(_this, this[i], i, this));
+//     }
+//     return arr;
+// }
+// ==================================================================
+// 自己封装一个myEvery函数
+// ==================================================================
+// Array.prototype.myEvery = function (func) {
+//     var flag = true;
+//     var len = this.length;
+//     var _this = arguments[1] || window;
+//     for (var i = 0; i < len; i++) {
+//         if(func.apply(_this, [this[i], i, this]) == false) {
+//             flag = false;
+//             break;
+//         }
+//     }
+//     return flag;
+// }
+// ==================================================================
+// 数组 ： 封装一个myFilter方法
+// ==================================================================       
+// Array.prototype.myFilter = function (func) {
+//     var arr = [];
+//     var len = this.length;
+//     var _this = arguments[1] || window;
+//     for (var i = 0; i < len; i++) {
+//         func.apply(_this, [this[i], i, this]) && arr.push(this[i]);
+//     }
+//     return arr;
+// }
 // ==================================================================
 // 自己封装一个myForEach函数【与系统中的forEach完全相同】
 // ==================================================================
@@ -106,18 +156,6 @@ Array.prototype.myReduce = function(func, init) {
         prev = func(prev, this[i], i, this);
     }
     return prev;
-}
-// ==================================================================
-// 数组 ： 封装一个myFilter方法
-// ==================================================================
-Array.prototype.myFilter = function(func) {
-    var newArr = [];
-    for (var i = 0; i < this.length; i++) {
-        if (func(this[i], i)) {
-            newArr.push(this[i]);
-        }
-    }
-    return newArr;
 }
 // ==================================================================
 // 拖拽函数
