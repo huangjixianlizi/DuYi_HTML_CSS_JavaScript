@@ -47,6 +47,12 @@
 [转换字符串方法、判断数组类型](https://my.oschina.net/u/3953786/blog/2251377)
 
 
+#正则表达式
+
+[正则表达式定义与创建](https://www.cnblogs.com/pandawind/p/9910114.html)
+
+[正则表达式语法](https://www.cnblogs.com/pandawind/p/9910127.html)
+
 #JavaScript
 
 [数据类型强制转换](https://my.oschina.net/u/3953786/blog/2245970)
@@ -59,6 +65,10 @@
 
 [内置对象和包装类型](https://www.cnblogs.com/pandawind/p/9883787.html)
 
+[String API](https://www.cnblogs.com/pandawind/p/9922988.html)
+
+[DOM Tree](https://www.cnblogs.com/pandawind/p/9922995.html)
+
 #JQuery
 
 
@@ -69,3 +79,5 @@
 [jquery选择器](https://www.cnblogs.com/pandawind/p/9877713.html)
 
 [基本筛选器](https://www.cnblogs.com/pandawind/p/9889270.html)
+
+[jQuery——子元素筛选器](https://www.cnblogs.com/pandawind/p/9896971.html)
