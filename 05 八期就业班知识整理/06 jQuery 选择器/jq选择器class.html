@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+        }
+
+        .wrap div {
+            display: inline-block;
+            width: 80px;
+            height: 50px;
+            border: 1px solid #bbb;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+
+        .wrap ul li {
+            list-style: none;
+            width: 300px;
+            height: 50px;
+            border: 1px solid #bbb;
+            margin-top: 5px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            color: #333;
+        }
+
+        .wrap div.box4 {
+            /* display: none; */
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" id="wrapper">
+        <div class="box1 box">box1</div>
+        <div class="box2 box">box2</div>
+        <div class="box3 box">box3</div>
+        <ul>
+            <li class="zero">0</li>
+            <li class="one">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+        <div class="box4 box">
+            <p>hello world!!!</p>
+            <p>hello world!!!</p>
+        </div>
+        <!-- <p>Today Is Firday ~~</p>
+        <p>Today Is Firday ~~</p>
+        <p>Today Is Firday ~~</p> -->
+
+
+        <div class="box"></div>
+        <form>
+            <input type="checkbox" name="newsletter" checked="checked" value="Daily" />
+            <input type="checkbox" name="newsletter" value="Weekly" />
+            <input type="checkbox" name="newsletter" checked="checked" value="Monthly" />
+        </form>
+
+        <select>
+            <option value="1">Flowers</option>
+            <option value="2" selected="selected">Gardens</option>
+            <option value="3">Trees</option>
+        </select>
+        <form>
+                <input name="email" disabled="disabled" />
+                <input type="button" value="Input Button" />
+                <input type="checkbox" />
+    
+                <input type="file" />
+                <input type="hidden" />
+                <input type="image" />
+    
+                <input type="password" />
+                <input type="radio" />
+                <input type="reset" />
+    
+                <input type="submit" />
+                <input type="text" />
+                <select>
+                    <option>Option</option>
+                </select>
+    
+                <textarea></textarea>
+                <button>Button</button>
+    
+            </form>
+    </div>
+
+    <script src="./jquery.js"></script>
+    <script>
+
+        // $(document).ready()
+        // $(function(){
+        //     console.log('jquery ~~~');
+        // })
+
+        // $('ul li').each(function(index,ele){
+        //     // console.log(index,ele);
+        //     console.log(this);
+        //     $(this).css('backgroundColor','red');
+        // });
+
+        // data  元素上存放数据
+        
+        $('.wrap').data('aaa','bbb')
+        console.log($('.wrap').data('aaa'));
+        $('.wrap').removeData('aaa')
+        console.log($('.wrap').data('aaa'));
+        
+
+
+        // 基本选择器  
+        // $('#wrapper').css('backgroundColor','red');
+        // console.log($('#wrapper'));
+
+        // $('.wrap').css('backgroundColor','blue');
+
+        // $('p').css('color','#f40');
+
+        // 匹配所有的后代  
+        // $('.wrap p').css('color','blue');
+
+        $('p','.box').css('backgroundColor','blue');
+
+        // 层级
+
+        // 单独选中子元素
+        // $('.wrap > p').css('backgroundColor','blue');
+
+        // $('ul + div').css('backgroundColor','blue');
+
+        // 之后的兄弟
+        // $('.box2 ~ div').css('backgroundColor','blue');
+
+        // 筛选
+
+        // $('ul li:last').css('backgroundColor','blue');
+
+        // $('.box:not(".box1")').css('backgroundColor','blue');
+
+        // index的偶数
+        // $('ul li:even').css('backgroundColor','blue');
+        // $('ul li:odd').css('backgroundColor','red');
+
+        // 索引值
+        // $('ul li:eq(1)').css('backgroundColor','green');
+
+        // 内容 
+        // $('p:contains("hello world!!!")').css('backgroundColor','green');
+
+        // 空
+
+        // $('.box:empty').css('backgroundColor','green');
+
+        // $('.box:has(p)').css('backgroundColor','yellow');
+
+        // $('div:parent').css('backgroundColor','yellow');
+
+
+        // console.log($('.box:hidden'))
+
+        // 属性
+
+        // $('ul li[class]').css('backgroundColor','yellow');
+        // $('ul li[class!="zero"]').css('backgroundColor','yellow');
+
+        // $('div[class$="x"]').css('backgroundColor','yellow');
+
+        // $('#wrapper').css('backgroundColor','yellow');
+        // $('.wrap').css('backgroundColor','red');
+
+        //   子元素选择器
+
+        //    $('ul li:first-child').css('backgroundColor','yellow');
+
+        //    $('ul li:last-child').css('backgroundColor','yellow');
+
+        // 父元素中第一个此类型的元素
+        // $('p:first-of-type').css('color', 'blue');
+
+        // $('p:last-of-type').css('color', 'green');
+
+        // var oP = $('p:first-of-type');
+        // console.log(oP);
+
+        // 第几个  偶数个
+        // $('ul li:nth-child(even)').css('backgroundColor','yellow');
+
+        // :input  匹配input  textarea  select button
+
+
+
+    </script>
+</body>
+
+</html>
