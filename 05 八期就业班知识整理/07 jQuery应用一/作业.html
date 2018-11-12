@@ -10,8 +10,8 @@
 			box-sizing: border-box;
 		}
 		.wrapper{
-			width: 500px;
-			height: 500px;
+			width: 1002px;
+			height: 502px;
 			position: absolute;
 			left:20%;
 			top: 20%;
@@ -19,24 +19,25 @@
 		}
 		.little{
 			height: 100px;
-			width: 500px;
+			width: 1000px;
 			
 		}
 		.big{
 			height: 400px;
-			width: 500px;
-			border: 1px solid green;
+			width: 1000px;
+			/*border: 1px solid green;*/
 			background:;
-			background-size: 400px 500px;
+			background-size: 100% 100%;
 			background-repeat: no-repeat;
 		}
 		.img{
 			float: left;
-			width: 100px;
+			width: 200px;
 			height: 100px;
-			border: 1px solid red; 
-			background-size: 100px 100px;
+			/*border: 1px solid red; */
+			background-size: 100% 100%;
 			background-repeat: no-repeat;
+
 		}
 	</style>
 </head>
@@ -53,7 +54,14 @@
 	</div>
 	<script type="text/javascript" src="./jquery.js"></script>
 	<script type="text/javascript">
-		
+		$(".img").on('click',function(){
+			// console.log($(this).css("background-image"));
+			if($('.big').css('background-image') == $(this).css('background-image')){
+				$('.big').css("background-image","");
+			}else{
+				$('.big').css("background-image",$(this).css("background-image"));
+			}
+		})
 	</script>
 </body>
 </html>

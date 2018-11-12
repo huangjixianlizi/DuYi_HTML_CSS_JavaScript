@@ -109,7 +109,7 @@
 
 <body>
 
-    <div class="box1">
+  <!--   <div class="box1">
         <img src="./img/a1.png" alt="" class="pic1">
         <img src="./img/a2.png" alt="" title="pic2">
     </div>
@@ -120,9 +120,9 @@
         <input class="inp3" type="checkBox" checked>
         <input class="inp4" type="checkBox">
     </div>
-    <div class="box3" cla="box"></div>
+    <div class="box3" cla="box"></div> -->
 
-    <!-- <div class="box4">
+    <div class="box4">
         <ul>
             <li>a</li>
             <li>b</li>
@@ -130,7 +130,7 @@
             <li>d</li>
             <li>e</li>
         </ul>
-    </div> -->
+    </div>
     <!-- <div class="box5">
         <input type="text" value="hello world">
         <h3>今天是双十一</h3>
@@ -255,12 +255,12 @@
         // removeClass  删除class
         // toggleClass  切换class
         // 以上三个方法同时也可以接收一个函数为参数  最终结果根据函数返回值决定
-        // $('.box4 li').on('click', function () {
-        //     $('.big').removeClass('big');
-        //     $('.active').removeClass('active');
-        //     $(this).addClass('active');
-        //     $(this).toggleClass('big');
-        // });
+        $('.box4 li').on('click', function () {
+            // $('.big').removeClass('big');
+            // $('.active').removeClass('active');
+            // $(this).addClass('active');
+            $(this).toggleClass('big');
+        });
 
 
         // html方法  .box5
