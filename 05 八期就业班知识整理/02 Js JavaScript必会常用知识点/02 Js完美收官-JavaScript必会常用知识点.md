@@ -21,13 +21,13 @@
 
 	IE                        trident
 	
-	Firefox                   Gecko
+	Mozilla Firefox           Gecko
 	
-	Google Chrome             Webkit/blink
+	Google Chrome             Blink（Webkit分支）
 	 
 	Safari                    Webkit
 	
-	Opera                     presto
+	Opera                     Blink（原presto）
 
 
 ####访问网页过程：
