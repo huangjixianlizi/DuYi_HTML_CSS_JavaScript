@@ -16,6 +16,7 @@
 			left:20%;
 			top: 20%;
 			border: 1px solid black;
+			background-color: gray;
 		}
 		.little{
 			height: 100px;
@@ -39,6 +40,24 @@
 			background-repeat: no-repeat;
 
 		}
+		.right,
+		.left{
+			position: absolute;
+			display: inline-block;
+			top: 50%;
+			width: 30px;
+			height: 50px;
+			line-height: 50px;
+			background-color: white;
+			opacity: 0.8;
+			text-align: center;
+		}
+		.right{
+			right: 10px;
+		}
+		.left{
+			left: 10px;
+		}
 	</style>
 </head>
 <body>
@@ -51,6 +70,8 @@
 			<div class="img i5" style="background-image: url(./img/a5.png);"></div>
 		</div>
 		<div class = 'big'></div>
+		<div class="right">&gt</div>
+		<div class="left">&lt</div>
 	</div>
 	<script type="text/javascript" src="./jquery.js"></script>
 	<script type="text/javascript">
