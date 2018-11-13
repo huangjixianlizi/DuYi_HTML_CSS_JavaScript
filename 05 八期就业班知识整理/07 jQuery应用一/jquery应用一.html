@@ -109,7 +109,7 @@
 
 <body>
 
-  <!--   <div class="box1">
+<!--     <div class="box1">
         <img src="./img/a1.png" alt="" class="pic1">
         <img src="./img/a2.png" alt="" title="pic2">
     </div>
@@ -122,7 +122,7 @@
     </div>
     <div class="box3" cla="box"></div> -->
 
-    <div class="box4">
+ <!--    <div class="box4">
         <ul>
             <li>a</li>
             <li>b</li>
@@ -130,7 +130,7 @@
             <li>d</li>
             <li>e</li>
         </ul>
-    </div>
+    </div> -->
     <!-- <div class="box5">
         <input type="text" value="hello world">
         <h3>今天是双十一</h3>
@@ -141,7 +141,7 @@
         </div>
     </div> -->
 
-    <!-- <div class="box6">
+<!--     <div class="box6">
         <h1>标题1</h1>
         <h2>标题2</h2>
         <h3>标题3</h3>
@@ -151,8 +151,8 @@
         <p class="one">1</p>
         <p>2</p>
         <p>3</p>
-    </div> -->
-
+    </div>
+ -->
     <!-- <div class="box7">
         <p>筛选</p>
         <ul>
@@ -255,12 +255,12 @@
         // removeClass  删除class
         // toggleClass  切换class
         // 以上三个方法同时也可以接收一个函数为参数  最终结果根据函数返回值决定
-        $('.box4 li').on('click', function () {
-            // $('.big').removeClass('big');
-            // $('.active').removeClass('active');
-            // $(this).addClass('active');
-            $(this).toggleClass('big');
-        });
+        // $('.box4 li').on('click', function () {
+        //     $('.big').removeClass('big');
+        //     $('.active').removeClass('active');
+        //     $(this).addClass('active');
+        //     $(this).toggleClass('big');
+        // });
 
 
         // html方法  .box5
@@ -365,7 +365,7 @@
         // 所匹配的dom元素 
         // $('.box6').wrap($('h1')[0])
 
-        // unwrap 这个方法将移出元素的父元素。这能快速取消 .wrap()方法的效果
+        // unwrap 这个方法将移除元素的父元素。这能快速取消 .wrap()方法的效果
 
         // $('h2').unwrap()
 
@@ -450,23 +450,23 @@
         // $('a').parents('.box7')
 
         //prev 取得一个包含匹配的元素集合中每一个元素紧邻的前一个同辈元素的元素集合
-        $('li').prev()
-        $('li').prev('.two')
+        // $('li').prev()
+        // $('li').prev('.two')
         // prevAll 查找当前元素之前所有的同辈元素
-        $('li').prevAll()
-        $('li').prevAll('.two')
+        // $('li').prevAll()
+        // $('li').prevAll('.two')
         // siblings 取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合。
-        $('ul').siblings();
-        $('ul').siblings('p');
+        // $('ul').siblings();
+        // $('ul').siblings('p');
 
         // 串联
         // add 把与表达式匹配的元素添加到jQuery对象中。
         // 这个函数可以用于连接分别与两个表达式匹配的元素结果集。
-        $('a').add('div')
+        // $('a').add('div')
         //end  回到最近的一个"破坏性"操作之前。即，将匹配的元素列表变为前一次的状态。
 
-        $('.one').siblings().css('backgroundColor', 'red')
-            .end().css('backgroundColor', 'blue');
+        // $('.one').siblings().css('backgroundColor', 'red')
+        //     .end().css('backgroundColor', 'blue');
 
         // 工具类方法
         // $.parseHTML 函数用于将HTML字符串解析为对应的DOM节点数组
@@ -474,26 +474,26 @@
         // $.merge  合并两个数组
         // 返回的结果会修改第一个数组的内容——
         // 第一个数组的元素后面跟着第二个数组的元素
-        $.merge([0, 1, 2], [2, 3, 4])
+        // $.merge([0, 1, 2], [2, 3, 4])
 
         // 插件机制
         // $.extend
         // 扩展jQuery对象本身。
         // 用来在jQuery命名空间上增加新函数。
-        jQuery.extend({
-            min: function (a, b) { return a < b ? a : b; },
-            max: function (a, b) { return a > b ? a : b; }
-        });
+        // jQuery.extend({
+        //     min: function (a, b) { return a < b ? a : b; },
+        //     max: function (a, b) { return a > b ? a : b; }
+        // });
         // $.fn.extend
         // 扩展 jQuery 元素集来提供新的方法（通常用来制作插件）
         //   扩展后调用方式不同
-        jQuery.fn.extend({
-            check: function () {
-                return this.each(function () {
-                    this.checked = true;
-                });
-            },
-        });
+        // jQuery.fn.extend({
+        //     check: function () {
+        //         return this.each(function () {
+        //             this.checked = true;
+        //         });
+        //     },
+        // });
 
 
 
