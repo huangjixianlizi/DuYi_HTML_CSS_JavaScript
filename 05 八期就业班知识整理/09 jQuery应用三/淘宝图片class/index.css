@@ -1,0 +1,93 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+body{
+    background-color:#ddd;
+}
+.wrapper{
+    width:70%;
+    margin:100px auto;
+    border:1px solid #000;
+}
+.wrapper .photo-box{
+    width:90%;
+    margin:10px auto;
+}
+.wrapper .photo-box ul{
+    height:45px;
+
+}
+.wrapper .photo-box ul li{
+    width:40px;
+    height:40px;
+    float: left;
+    border:2px solid #fff;
+    padding:2px;
+    margin-right:15px;
+    position: relative;
+}
+.wrapper .photo-box ul li img{
+    width:40px;
+    height:40px;
+    cursor: url('./img/coverAdd.png'), auto;
+}
+
+.wrapper .photo-box ul li span{
+    position: absolute;
+    bottom:-12px;
+    left:15px;
+    display:inline-block;
+    width:0;
+    height:0;
+    border:6px solid transparent;
+    border-top: 6px solid red;
+    opacity:0;
+}
+.phptpView {
+    position: relative;
+    background-color:#fff;
+    width:0px;
+    height:0px;
+    margin-top:10px;
+    overflow: hidden;
+}
+.phptpView a{
+    position: absolute;
+    top:0;
+    display: block;
+    height:100%;
+    width:40px;
+    text-decoration: none;
+}
+.phptpView a.navLeft{
+    left:0;
+}
+.phptpView a.navRight{
+    right:0;
+}
+.phptpView a span{
+    display: none;
+    position: absolute;
+    top:50%;
+    margin-top:-20px;
+    font-size:30px;
+    color:red;
+}
+.phptpView{
+    transition: all 0.5s ease;
+}
+.phptpView a:hover span{
+    display:block;
+}
+.wrapper .photo-box ul li.active{
+    border:2px solid red;
+}
+.wrapper .photo-box ul li.active span{
+    opacity: 1;
+}
+.wrapper .photo-box ul li.active img{
+    cursor: url('./img/coverSub.png'), auto;
+    
+}

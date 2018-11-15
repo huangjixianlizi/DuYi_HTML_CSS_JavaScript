@@ -1,0 +1,116 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+body{
+    background-color:#333;
+}
+.wrapper{
+    width:70%;
+    margin:100px auto;
+    /* border:1px solid #cecece; */
+}
+.photo-box{
+    width:90%;
+    margin:10px auto;
+}
+.photos{
+    height: 45px;
+}
+.photos img{
+    height:40px;
+    width:40px;
+    cursor: url('img/coverAdd.png'), auto;
+}
+.photos li{
+    width:40px;
+    height:40px;
+    float: left;
+    border:2px solid #f2f2f2;
+    padding:2px;
+    margin-right:12px;
+    position:relative;
+}
+.photos li span{
+    width: 0;
+	height: 0;
+	border: 6px dashed transparent;
+    border-top: 6px solid #f23d6a;
+	position: absolute;
+	left: 15px;
+	opacity: 0;
+	bottom: -8px;
+} 
+.photoView{
+    position:relative;
+    margin-top: 10px;
+    width:0;
+    height:0;
+    overflow: hidden;
+    background-color: #f2f2f2;
+}
+.navLeft,
+.navRight {
+    position: absolute;
+    cursor: pointer;   
+    display:block;
+    text-decoration: none;
+    width: 40px;   
+    height:100%; 
+}
+.navLeft {
+    top: 0;
+    left: 0;
+}
+.navRight {
+    top: 0;
+    right: 0;
+}
+.navicon {
+    position: absolute;
+    top:50%;
+    display: none;
+    margin-top:-20px;
+    font-size: 40px;
+    font-style: normal;
+    color: #f23d6a;
+}
+.navright .navicon {
+    right: 8px;
+}
+.navleft .navicon {
+    left: 8px;
+}
+.photo-box .current {
+    border: 2px solid #f23d6a;
+    border-radius: 2px;
+    cursor: auto;
+}
+.photos .current span{
+    opacity:1;
+    bottom:-12px;
+}
+.photoView a:hover span{
+    display:block;
+}
+.photoView{
+    transition: all 100ms ease-out;
+}
+.photoView,
+.photoView img,
+.photo-box .current img {
+    cursor: url('img/coverSub.png'), auto;
+}
+
+
+/* .photoView a{
+    position: absolute;
+    height:100%;
+}
+.photoView i{
+    position:absolute;
+    top:50%;
+} */
+
+
