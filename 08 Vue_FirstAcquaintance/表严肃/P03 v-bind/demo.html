@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style type="text/css">
+        .active{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <a :class="{active:isActive}" v-bind:href="url">点我</a>
+        <!-- --------- v-find可省略 ------------ -->
+        <!-- <img v-bind:class="class" v-bind:src="img"> -->
+    </div>
+   
+    <script type="text/javascript">
+    var app = new Vue({
+        el : '#app',
+        data : {
+            url : 'http://www.baidu.com/',
+            isActive : true
+            // img : ''
+            // class : ''
+        }
+    })
+    </script>
+</body>
+
+</html>

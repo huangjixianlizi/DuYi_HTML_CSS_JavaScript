@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style type="text/css">
+        .active{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+    <!-- =======    例一    ================================== -->
+       <!--  <button v-on = "{mouseenter : onEnter , mouseleave : onLeave}"  v-on:click = "onClick(10)">点我</button>-->  
+    <!-- =======    例一    ========================================= -->
+    <!-- =======    例二    ========================================= -->      
+        <!-- <form v-on:submit='onSubmit($event)'> 看下面的简写实现方式
+            <input type="text" text="">
+            <button type="submit">提交</button>
+        </form> -->
+
+        <form @submit.prevent='onSubmit' @keyup = 'onKeyUp'>
+            <!--  --------- v-on:可用@替换 ----------- -->
+            <input type="text" text="">
+            <button type="submit">提交</button>
+        </form>
+    <!-- prevent(阻止默认事件) stop(阻止冒泡事件)
+        event.preventDefault() 或 event.stopPropagation() -->
+    <!-- keyup.enter -->
+    <!-- =======    例二    ========================================= -->
+    </div>
+   
+    <script type="text/javascript">
+//    <!-- =====    例一    ========================================= --> 
+//    var app = new Vue({
+//        el : '#app',
+//         methods : {
+//             onClick : function(e){
+//                 console.log(e)
+//             },
+//             onEnter : function(){
+//                 console.log('enter')
+//             },
+//             onLeave : function(){
+//                 console.log('leave')
+//             }
+//         }
+//    })
+//   <!-- =======    例一    ========================================= -->
+//   <!-- =======    例二    ========================================= -->
+       var app = new Vue({
+           el : '#app',
+            methods : {
+                onSubmit : function(e){
+                    e.preventDefault();
+                    console.log('submit')
+                },
+                onKeyUp : function(){
+                    console.log('KeyUp')
+                }
+            }
+       })
+//   <!-- ====   例二    ========================================= -->       
+    </script>
+</body>
+
+</html>

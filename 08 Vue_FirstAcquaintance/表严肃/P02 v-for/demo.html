@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<!--     <div class="wrapper">
+    <!--     <div class="wrapper">
         <ul>
             <li v-for='food in foodList'>{{food}}</li>
         </ul>
@@ -22,7 +22,7 @@
     })
     </script> -->
     <!-- ======================= -->
-        <div class="wrapper">
+    <div class="wrapper">
         <ul>
             <li v-for='food in foodList'>{{food.name}}:￥{{food.price}}</li>
         </ul>
@@ -31,14 +31,14 @@
     var wrapper = new Vue({
         el: '.wrapper',
         data: {
-            foodList : [{
-                name : '葱',
+            foodList: [{
+                name: '葱',
                 price: 3
-            },{
-                name : '姜',
+            }, {
+                name: '姜',
                 price: 4
-            },{
-                name : '蒜',
+            }, {
+                name: '蒜',
                 price: 5
             }]
         }
