@@ -444,8 +444,28 @@
                 $('body').off('mousemove')
             })
         })
-
     </script>
+<!-- ==========自写拖拽================================================== -->
+<!--     <script type="text/javascript" src="./jquery.js"></script>
+    <script type="text/javascript">
+    $('div').on('mousedown',function(e){
+        var beforeX = e.pageX;
+        var beforeY = e.pageY;
+        var divX = parseInt($('div').css('left'));
+        var divY = parseInt($('div').css('top'));
+        $('body').on('mousemove',function(e){
+            var lastX = e.pageX;
+            var lastY = e.pageY;
+            $('div').css({
+                'top' : (lastY - beforeY + divY) + 'px',
+                'left' :  (lastX - beforeX + divX) + 'px'
+            })
+        }).on('mouseup',function(){
+            $('body').off('mousemove')
+        })
+    })
+    </script> -->
+<!-- =================================================================== -->
 </body>
 
 </html>

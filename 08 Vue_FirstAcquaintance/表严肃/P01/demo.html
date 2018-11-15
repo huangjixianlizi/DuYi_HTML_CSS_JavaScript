@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+<!--     <div class="wrapper">
+        <div class="name">
+            <input type="text" v-model="name">
+            <span v-show = 'name'>姓名：{{name}}</span>
+        </div>
+        <div class="age">
+            <input type="text" v-model="age">
+            <span v-show='age'>年龄：{{age}}</span>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var name = new Vue({
+        el: '.name',
+        data: {
+            name: ''
+        }
+    })
+    var age = new Vue({
+        el: '.age',
+        data: {
+            age: ''
+        }
+    })
+    </script> -->
+    <div class="wrapper">
+        <div>
+            <input type="text" v-model="name">
+            <span v-show = 'name'>姓名：{{name}}</span>
+        </div>
+        <div>
+            <input type="text" v-model="age">
+            <span v-show='age'>年龄：{{age}}</span>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var wrapper = new Vue({
+        el: '.wrapper',
+        data: {
+            name: '',
+            age: ''
+        }
+    })
+    </script>
+</body>
+
+</html>

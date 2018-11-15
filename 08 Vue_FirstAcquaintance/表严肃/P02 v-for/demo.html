@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+<!--     <div class="wrapper">
+        <ul>
+            <li v-for='food in foodList'>{{food}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    var wrapper = new Vue({
+        el: '.wrapper',
+        data: {
+            foodList : ['葱','姜','蒜']
+        }
+    })
+    </script> -->
+    <!-- ======================= -->
+        <div class="wrapper">
+        <ul>
+            <li v-for='food in foodList'>{{food.name}}:￥{{food.price}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    var wrapper = new Vue({
+        el: '.wrapper',
+        data: {
+            foodList : [{
+                name : '葱',
+                price: 3
+            },{
+                name : '姜',
+                price: 4
+            },{
+                name : '蒜',
+                price: 5
+            }]
+        }
+    })
+    </script>
+</body>
+
+</html>
