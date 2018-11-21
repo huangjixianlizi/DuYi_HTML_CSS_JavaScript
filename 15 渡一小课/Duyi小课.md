@@ -6,6 +6,8 @@
 ---
 ---
 
+#HTML
+
 #CSS
 
 [Css3之阴影](http://c7.gg/aLHwf)
@@ -25,6 +27,14 @@
 [div居中方式](https://www.cnblogs.com/pandawind/p/9844347.html)
 
 [web前端css实现六边形效果](https://www.cnblogs.com/pandawind/p/9877765.html)
+
+[表单筛选器](https://my.oschina.net/u/3953786/blog/2873663)
+
+[Css常用布局](https://my.oschina.net/u/3953786/blog/2873667)
+
+[css美化checkbox](https://my.oschina.net/u/3953786/blog/2875627)
+
+[CSS实现微信对话框](https://my.oschina.net/u/3953786/blog/2875637)
 
 #数组
 
@@ -53,6 +63,14 @@
 
 [正则表达式语法](https://www.cnblogs.com/pandawind/p/9910127.html)
 
+[常见正则表达式分析练习](https://my.oschina.net/u/3953786/blog/2874161)
+
+[正则表达式字符与量词](https://my.oschina.net/u/3953786/blog/2874165)
+
+[正则表达式常用方法](https://my.oschina.net/u/3953786/blog/2876042)
+
+[正则表达式中常用字符串方法](https://my.oschina.net/u/3953786/blog/2876053)
+
 #JavaScript
 
 [数据类型强制转换](https://my.oschina.net/u/3953786/blog/2245970)
@@ -69,6 +87,10 @@
 
 [DOM Tree](https://www.cnblogs.com/pandawind/p/9922995.html)
 
+[节点对象](https://my.oschina.net/u/3953786/blog/2875469)
+
+[History 历史记录](https://my.oschina.net/u/3953786/blog/2878106)
+
 #JQuery
 
 
@@ -81,3 +103,7 @@
 [基本筛选器](https://www.cnblogs.com/pandawind/p/9889270.html)
 
 [jQuery——子元素筛选器](https://www.cnblogs.com/pandawind/p/9896971.html)
+
+#JSONP
+
+[jsonp揭秘](https://my.oschina.net/u/3953786/blog/2878769)
