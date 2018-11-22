@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        circle {
+            stroke: #000;
+            fill: transparent;
+        }
+        path {
+            stroke: #0fc;
+            fill: transparent;
+            stroke-width: 2px;
+        }
+    </style>
+</head>
+<body>
+    <span>大圆弧 顺时针</span>
+    <svg width="300px" height="200px">
+        <circle r="50" cx="100" cy="100"></circle>
+        <circle r="50" cx="186" cy="100"></circle>
+        <path d="m 143 75 A 50 50 0 1 1 143 125"></path>
+    </svg>
+    <span>小圆弧 顺时针</span>
+    <svg width="300px" height="200px">
+        <circle r="50" cx="100" cy="100"></circle>
+        <circle r="50" cx="186" cy="100"></circle>
+        <path d="m 143 75 A 50 50 0 0 1 143 125"></path>
+    </svg>
+    <br/>
+    <span>大圆弧 逆时针</span>
+    <svg width="300px" height="200px">
+        <circle r="50" cx="100" cy="100"></circle>
+        <circle r="50" cx="186" cy="100"></circle>
+        <path d="m 143 75 A 50 50 0 1 0 143 125"></path>
+    </svg>
+    <span>小圆弧 逆时针</span>
+    <svg width="300px" height="200px">
+        <circle r="50" cx="100" cy="100"></circle>
+        <circle r="50" cx="186" cy="100"></circle>
+        <path d="m 143 75 A 50 50 0 0 0 143 125"></path>
+    </svg>
+</body>
+</html>

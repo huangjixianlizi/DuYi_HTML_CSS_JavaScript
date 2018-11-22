@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        svg {
+            /*width: 500px;
+           height: 500px;*/
+        }
+        /* css 样式 */
+
+        line {
+            stroke: #000;
+            stroke-width: 10px;
+        }
+
+        /* rect 样式 */
+        rect {
+            stroke: green;
+            fill: red;
+            stroke-width: 10px;
+        }
+
+        /* circle 样式 */
+        circle {
+            stroke: green;
+            fill: red;
+            stroke-width: 10px;
+        }
+
+        /* polyline */
+        polyline {
+            stroke: blue;
+            fill: transparent;
+        }
+
+        /* polygon */
+        polygon {
+            stroke: blue;
+            fill: transparent;
+        }
+
+        /* text */
+        text {
+            font-size: 50px;
+            stroke: blue;
+            text-anchor: end;
+        }
+
+        .viewbox {
+            stroke-width: 0;
+        }
+
+        path {
+            stroke: #000;
+            fill: transparent;
+        }
+
+        .line-style {
+            stroke-width: 20px;
+            stroke-linejoin: miter;
+            stroke-linecap: round;
+            stroke-miterlimit: 30;
+        }
+
+        .animate {
+            stroke: #000;
+            stroke-width: 10px;
+            stroke-dasharray: 400;
+            stroke-dashoffset: 400;
+            animation:dash 1s linear forwards;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .test {
+            stroke-dashoffset: 400px;
+            /* 也可以是百分比， 根据父元素的宽度来计算 */
+        }
+
+        .blur {
+            filter: url('#Gaussian_Blur');
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="500px" height="500px" viewBox="10 10 30 30">
+        <!-- 线段 -->
+        <!--<line x1="100" y1="100" x2="200" y2="100" stroke="#000" stroke-width="10"></line>-->
+        <!-- 矩形 -->
+        <!--<rect x="100" y="100" width="100" height="100" rx="20" ry="20"></rect>-->
+        <!-- 圆形 -->
+        <!--<circle r="50" cx="250" cy="250"></circle>-->
+        <!-- 椭圆 -->
+        <!--<ellipse rx="100" ry="50" cx="250" cy="250"></ellipse>-->
+        <!-- 折线 -->
+        <!--<polyline points="100 100, 200 50, 300, 100"></polyline>-->
+        <!-- 多边形，自己会连起来结束点和起始点 -->
+        <!--<polygon points="100 100, 200 50, 300, 100"></polygon>-->
+        <!-- 文本 -->
+        <!--<text x="100" y="100">瞅你咋地！</text>-->
+
+
+        <!-- view-box 测试 -->
+        <!-- viewBox="0,0,500,500" -->
+        <!-- 主要使用view-box.html演示 -->
+        <rect class="viewbox" x="10" y="10" width="20" height="20"></rect>
+        <!-- perspecetive -->
+        <!-- preserveAspectRatio = "none" -->
+        <!-- 默认值 -->
+        <!-- preserveAspectRatio="xMidYMid meet" -->
+
+        <!-- path -->
+        <!-- M L 命令 -->
+        <!--<path d = "M 100 100 L 200 100" />-->
+        <!--<path d = "m 100 100 l 100 0" /> 相对位置 -->
+        <!-- V H 命令 -->
+        <!--<path d="M100 100 H 200 V 200 H 100 V 100"/>-->
+        <!-- A 命令 -->
+        <!--<path d="M 100 100 A 70 70 0 1 1 200 200"></path>-->
+
+        <!-- 贝塞尔曲线 -->
+        <!-- 先演示第一个命令 -->
+        <!--<path d = "M 100 100 Q 150 10 180 100 T  350 150" fill="#0fc" stroke-width="20px"/>-->
+        <!--<path d = "M 100 100 C 150 10 180 50 200 100 S  300 180 400 100" fill="#0fc" stroke-width="20px"/>-->
+
+        <!-- 演示stroke-linejoin stroke-linecap -->
+        <!--<path class="line-style" d = "M 100 100 L 200 100 L 100 200" stroke-width="20px" stroke-miterlimit="30"  stroke-linecap="round" stroke-linejoin="round"/>-->
+        <!-- css 演示 -->
+        <!--<path class="line-style" d = "M 100 100 L 200 100 L 100 110"/>-->
+
+        <!-- stroke-dashoffset/dasharray -->
+        <!-- <path id="path" class="test" d="M 100 100 L 500 100" stroke-width="10" stroke-dasharray="400"></path> -->
+        <!-- 动画 -->
+        <!--<path d="M 100 100 L 500 100" class="animate"></path>-->
+
+        <!-- 线性渐变 -->
+        <!-- <defs>
+            <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(255,255,0); stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:rgb(255,0,0); stop-opacity:1"/>
+            </linearGradient>
+            <radialGradient id="bg2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:green;"/>
+                <stop offset="100%" style="stop-color:red;"/>
+            </radialGradient>
+        </defs>
+        <rect x="0" y="0" width="500" height="500" style="fill:url(#bg1);"/>
+ -->
+        <!-- 模糊 -->
+        <!-- 也可以写道css中 -->
+        <!--<defs>
+            <filter id="Gaussian_Blur">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10"/>
+            </filter>
+        </defs>
+        <rect x="100" y="100" width="100" height="100" style="filter: url(#Gaussian_Blur);"/>-->
+    </svg>
+
+
+    <!-- 练习 1 的代码 -->
+    <!--<svg width=500 height=500>
+        <rect x="500" y="500" width="150" height="150" rx="10" ry="10" stroke-width="2px" stroke="#000" fill="transparent"></rect>
+        <rect x="50" y="50" width="150" height="150" rx="10" ry="10" stroke-width="2px" stroke="#000" fill="transparent"></rect>
+        <polyline points="60 50, 75 35, 100 50, 125 35, 150 50, 175 35, 190 50" fill="#000"></polyline>
+        <circle r="13" cx="90" cy="100"></circle>
+        <circle r="13" cx="160" cy="100"></circle>
+        <circle r="3" cx="95" cy="105" fill="#000" fill="transparent"></circle>
+        <circle r="3" cx="165" cy="105" fill="#000" fill="transparent"></circle>
+        <polygon points="125 125,130 140,120 140"></polygon>
+        <ellipse rx="25" ry="10" cx="125" cy="160"></ellipse>
+        <text x="125" y="220">hello,world</text>
+    </svg>-->
+
+    <!-- js 操作 svg -->
+    <!--<script>
+        var char = 'http://www.w3.org/2000/svg',
+            svg = document.createElementNS(char, 'svg');
+
+        svg.setAttribute('width', 500);
+        svg.setAttribute('height', 500);
+        svg.setAttribute('viewBox', '0 0 500 500');
+
+        var rect = document.createElementNS(char, 'rect');
+
+        rect.setAttribute('x', 100);
+        rect.setAttribute('y', 100);
+        rect.setAttribute('width', 100);
+        rect.setAttribute('height', 100);
+        rect.setAttribute('fill', '#0fc');
+        svg.appendChild(rect);
+        document.body.appendChild(svg);
+    </script>-->
+
+    <!-- getTotalLength() -->
+    <!-- getPointAtLength() -->
+    <!--<script>
+        //  给一个 path 加 id
+        var path = document.getElementById('path');
+        var d = path.getTotalLength();
+
+        var p = path.getPointAtLength(10);
+    </script>-->
+</body>
+
+</html>
