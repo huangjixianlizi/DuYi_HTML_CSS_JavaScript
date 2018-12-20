@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            bordeR: 1px solid #000;
+            padding: 20px;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        console.log($('.box'), $('.box', '.wrap').prevObject)
+        //单选五个  多选五个  填空两个  解答两个
+
+        // 1, var obj1 = { a: 'bb', b: 'cc' };
+        // var obj2 = { a: 'dd', c: 'ee' };
+        // var obj = $.extend(true, obj1, obj2); 
+        // 则obj = ___;Obj1 = ___; obj2 = ___答案 ( );
+        // 正确答案:A;
+        // A, { a: "dd", b: "cc", c: "ee" }  { a: "dd", b: "cc", c: "ee" } { a: "dd", c: "ee" }
+        // B, { a: "dd", c: "ee" }  { a: "dd", b: "cc", c: "ee" } { a: "dd", b: 'cc', c: "ee" }
+        // C, { a: "bb", b: "cc", c: "ee" }  { a: "dd", b: "cc" } { a: "dd", c: "ee" }
+        // D, { a: "bb", b: "cc", c: "ee" }  { a: "dd", b: "cc"} { a: "dd", b: 'cc', c: "ee" }
+
+        // 2,关于jQuery中删除已有元素的方法及区别（）
+        // 正确答案：A;empty()从被选元素中删除子元素
+        // remove()删除被选元素（同样删除其子元素）
+
+        // A,empty()从被选元素中删除子元素
+        // B,remove()删除被选元素（不会删除其子元素）
+        // C,remove()从被选元素中删除子元素
+        // D,empty()删除被选元素及其子元素
+
+
+        // 3,$('ul').on('click','li',function(){
+        //     console.log(this);
+        // }),html结构如下，<ul><li>click</li></ul>;在以上这段代码中打印出（）
+        // 正确答案：B
+        // A,window{...} 
+        // B,<li>click</li>         
+        // C,jQuery.fn.init [li, prevObject: jQuery.fn.init(1)]
+        // D,<ul>...</ul>
+
+
+        // 4,如何选中class类名为wrapper得div中得所有li标签，下列不正确得是（）
+        // 答案：D
+        // A,$(‘.wrapper li’)
+        // B,$(‘li’,’.wrapper’)
+        // C,$(‘.wrapper’).find(‘li’)
+        // D,$(‘div li’)
+
+
+        // 5,在一组标签中，想要找到第一个元素用___实现，想要找到第二个标签用___实现
+        // 正确答案：D
+        // A,eq(0) first
+        // B,first eq(2)
+        // C,eq(1) first
+        // D,first eq(1)
+
+
+        // 多选
+        // 1，在jQuery中，返回元素内容宽高下列描述正确的是：
+        // 正确答案：A,C
+        // Width   innerwidth  outerwidth
+        // 1,Width()--width   
+        // 2,innerwidth-- width + padding  
+        // 3,outerwidth()---width + padding + border  	 
+        // 4,outerwidth(true)---width + padding + border + margin
+
+        // A,width()方法设置或返回元素的宽度（不包括内边距、边框或外边距）
+        // B,height()方法设置或返回元素的高度（包括内边距、边框或外边距）
+        // C,innerwidth() 方法设置或返回元素的宽度（包括内边距）
+        // D,innerheight() 方法设置或返回元素的高度（不包括内边距、边框或外边距）
+
+
+        // 2,下列关于jQuery中操作元素class的说法正确的是
+        // 正确答案：abc
+        // A,removeClass() 移除class类名
+        // B,addClass() 添加class类名
+        // C,toggleClass() 切换class
+        // D,$('div').classList.add() 添加class类名
+
+
+        // 3,jQuery中遍历节点的方法，错误的是
+        // 正确答案：cd
+        // A,next() 取得匹配元素后面紧邻的同辈元素
+        // B,prev() 取得匹配元素前面紧邻的同辈元素
+        // 取得匹配元素的所有同辈元素
+        // C,siblings() 取得匹配元素前的所有同辈元素
+        // D,closest() 取得元素紧邻的后一个元素匹配
+        // closest(‘div’) 方法获得匹配选择器的第一个祖先元素，从当前元素开始沿 DOM 树向上
+
+
+        // 4,html(),text(),val() 描述正确的是（）
+        // 正确答案：ABCD
+        // A,html()可以读取一个元素的HTML内容
+        // B,text()读取和修改一个元素的文本内容
+        // C,html()可以修改一个元素的HTML内容
+        // D,val()读取和修改一个表单元素的value字段值
+
+
+        // 5,在jquery中添加元素，正确的是
+        // 正确答案：BCD
+        // A,append() - 在被选元素的开头插入内容
+        // B,prepend() - 在被选元素的开头插入内容
+        // C,after() - 在被选元素之后插入内容
+        // D,before() - 在被选元素之前插入内容
+
+
+
+        // 填空：
+        // 1，jQuery特点有__1__、____ 2，___，在其源码中通过3,_____方式封闭作用域，防止变量污染，
+        // 那么我们又能通过调用jQuery()或$()访问到jQuery是因为4____把函数暴漏在5，____上
+        // (提示4，空填一句代码)
+        // 正确答案：1，无new构造 2，链式调用,3,立即执行函数 
+        // 4,window.jQuery = window.$ = jQuery
+        //  5，window
+
+
+        // 2,jQuery中有哪些类型得选择器，写出你掌握得几种___;（三种以上）
+        // 正确答案：$('ul li.active')  标签选择器  $('.class') class选择器  $('#id') id选择器 等
+
+
+        // 简答
+        // 1，相比于原生js,使用jquery的好处？   
+        // jQuery是轻量级的js库，大小不到30kb,它有强大的选择器，出色的DOM操作的封装，
+        // 有可靠的事件处理机制(jQuery在处理事件绑定的时候相当的可靠)，
+        // 完善的ajax(它的ajax封装的非常的好，不需要考虑复杂浏览器的兼容性和XMLHttpRequest对象的创建和使用的问题。) 
+        // 出色的浏览器的兼容性。而且支持链式操作，隐式迭代。
+        // 行为层和结构层的分离，还支持丰富的插件，jquery的文档也非常的丰富。
+
+
+        // 2，封装插件的好处？如果你现在要封装一个插件，
+        // 比如翻页插件，你的要怎么做,需要注意哪些地方？（可以简略代码配合文字说明，需写出主要调用jquery中的方法）
+
+        // 高内聚  低耦合
+        // 插件的好处：对已有的一系列方法或函数的封装，以便在其他地方重新利用，方便后期维护和提高开发效率
+        // i. 1.插件的文件名推荐命名为jquery.[插件名].js，以免和其他的javaScript库插件混淆
+        // ii. 2.所有的对象方法都应当附加到jQuery.fn对象上，而所有的全局函数都应当附加到jQuery对象本身上 
+        // iii. 3.插件应该返回一个jQuery对象，以保证插件的可链式操作
+        // return this;
+        // v. 5.所有的方法或函数插件，都应当以分号结尾，否则压缩的时候可能出现问题。在插件头部加上分号，这样可以避免他人的不规范代码给插件带来影响
+
+        // vi. 6.在插件中通过$.extent({})封装全局函数,选择器插件，扩展已有的object对象通过$.fn.extend({})封装对象方法插件
+
+
+        // 3.子元素选择器和后代选择器元素有什么区别？
+        // 答:子代元素是找子节点下的所有元素,后代元素是找子节点或子节点的子节点的元素
+
+
+
+        // 4， $(document).ready()方法和window.onload有什么区别？
+        // 答: 两个方法有相似的功能，但是在实行时机方面是有区别的。
+        // 1 window.onload方法是在网页中所有的元素(包括元素的所有关联文件)完全加载到浏览器后才执行的。
+        // 2 $(document).ready() 方法可以在DOM载入就绪时就对其进行操纵，并调用执行绑定的函数。
+
+
+
+        // 5.$(this) 和 this关键字在 jQuery 中有何不同？（答案如下）
+        // 这对于很多 jQuery 初学者来说是一个棘手的问题，其实是个简单的问题。
+        // $(this) 返回一个 jQuery 对象，你可以对它调用多个 jQuery 方法，比如用 text() 获取文本，
+        // 用val() 获取值等等。
+        // 而 this 代表当前元素，它是 JavaScript 关键词中的一个，表示上下文中的当前 DOM 元素。
+        // 你不能对它调用 jQuery 方法，直到它被 $() 函数包裹，例如 $(this)。
+
+
+
+        // 6. function test() {
+        //     console.log(a);
+        //     console.log(foo());
+        //     var a = 1;
+        //     function foo() {
+        //         return 2;
+        //     }
+        //    }
+        // test();
+        // 上面这段代码输出什么？
+        // 答案：undefined和2
+
+
+        // 7，用js实现数组排序？（实现方法越多越好）
+        // 快排  
+
+
+        //    [left] + min + [right]
+
+        // function quickArr(arr) {
+        //     // 结束递归
+        //     if (arr.length <= 1) {
+        //         return arr;
+        //     }
+        //     var left = [], right = [];
+        //     var pIndex = Math.floor(arr.length / 2);
+        //     var p = arr.splice(pIndex, 1)[0];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (arr[i] <= p) {
+        //             left.push(arr[i]);
+        //         } else {
+        //             right.push(arr[i]);
+        //         }
+        //     }
+        //     // 递归
+        //     return quickArr(left).concat([p], quickArr(right));
+        // }
+        // console.log(quickArr(array))
+
+
+        // 冒泡
+        // function bubbleSort(arr) {
+        //     for (var i = 0; i < arr.length - 1; i++) {
+        //         for (var j = i + 1; j < arr.length; j++) {
+        //             if (arr[i] > arr[j]) {
+        //                 var temp = arr[i];
+        //                 arr[i] = arr[j];
+        //                 arr[j] = temp;
+        //             }
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // console.log(bubbleSort(array));
+
+        var array = [1, 1, 2, 5, 4, 3, 7, 5, 9, 0, 3, 0];
+
+
+
+        function unique3(arr) {
+            var newArr = [];
+            var len = arr.length;
+            for(var i = 0; i < len; i ++){
+                for(var j = i + 1; j < len; j++){
+                    if(arr[i] === arr[j]){
+                        j = ++ i;
+                    }
+                }
+                newArr.push(arr[i]);
+            }
+            return newArr;
+        }
+        console.log(unique3(array))
+
+
+        (function($){
+
+        })(jQuery);
+
+
+
+
+
+
+
+
+
+
+        //利用对象
+        // function unique2(arr) {
+        //     var obj = {};
+        //     var len = arr.length;
+        //     var newArr = [];
+        //     for (var i = 0; i < len; i++) {
+        //         if (!obj[arr[i]]) {
+        //             obj[arr[i]] = 1;
+        //             newArr.push(arr[i]);
+        //         }
+        //     }
+        //     return newArr;
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // function unique1(arr) {
+        //     var newArr = [];
+        //     var len = arr.length;
+        //     for (var i = 0; i < len; i++) {
+        //         if (newArr.indexOf(arr[i]) == -1) {
+        //             newArr.push(arr[i]);
+        //         }
+        //     }
+        //     return newArr;
+        // }
+        // console.log(unique1(array))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // function quickArr(arr) {
+        //     var left = [], right = [];
+        //     if (arr.length <= 1) {
+        //         return arr;
+        //     }
+        //     var pIndex = Math.floor(arr.length / 2);
+        //     var p = arr.splice(pIndex, 1)[0];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (arr[i] <= p) {
+        //             left.push(arr[i]);
+        //         } else {
+        //             right.push(arr[i]);
+        //         }
+        //     }
+        //     // 利用递归
+        //     return quickArr(left).concat([p], quickArr(right));
+        // }
+
+        // // 冒泡
+        // var array = [2,6,3,122,8,0,5];
+        // function bubbleSort(arr) {
+        //     for (var i = 0; i < arr.length; i++) {
+        //         for (var j = i + 1; j < arr.length; j++) {
+        //             if (arr[i] > arr[j]) {
+        //                 temp = arr[i];
+        //                 arr[i] = arr[j];
+        //                 arr[j] = temp;
+        //             }
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // console.log(bubbleSort(array))
+
+
+        // 数组去重
+        // 通过索引
+        // function unique1(arr) {
+        //     var newArr = [];
+        //     var len = arr.length;
+        //     for (var i = 0; i < len; i++) {
+        //         if (newArr.indexOf(arr[i]) == -1) {
+        //             newArr.push(arr[i])
+        //         }
+        //     }
+        //     return newArr;
+        // }
+
+        // <!-- 冒泡 -->
+        // function unique2(arr) {
+        //     var newArr = [];
+        //     var len = arr.length;
+        //     for (var i = 0; i < len; i++) {
+        //         for (var j = i + 1; j < len; j++) {
+        //             if (arr[i] === arr[j]) {
+        //                 j = ++i;
+        //             }
+        //         }
+        //         newArr.push(arr[i]);
+        //     }
+        //     return newArr;
+        // }
+
+        // //利用对象
+        // function unique3(arr) {
+        //     var obj = {},
+        //         len = arr.length,
+        //         newArr = [];
+        //     for (var i = 0; i < len; i++) {
+        //         if (!obj[arr[i]]) {
+        //             obj[arr[i]] = 1;
+        //             newArr.push(arr[i]);
+        //         }
+        //     }
+        //     return newArr;
+        // }
+
+        // 深度克隆
+        function deepClone(target, option) {
+            var copy, src;
+            if (option != null) {
+                for (var prop in option) {
+                    copy = option[prop];
+                    src = target[prop];
+                    // 判断是否为引用值
+                    if (copy && typeof copy == 'object') {
+                        // 判断引用值的类型
+                        if (Object.prototype.toString.call(copy) == '[object Array]') {
+                            src = src ? src : [];
+                        } else {
+                            src = src ? src : {};
+                        }
+                        target[prop] = deepClone(src, copy);
+                    } else {
+                        target[prop] = copy;
+                    }
+                }
+            }
+            return target;
+        }
+
+
+
+    </script>
+</body>
+
+</html>
